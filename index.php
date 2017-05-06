@@ -118,35 +118,39 @@
   			<div class="search-fields">
   				<ul class="select-group clearfix">
   					<li>
-  						<select class="form-control js-selectbox" title="city">
-  							<option>City</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
+  						<select class="form-control js-selectbox" title="City">
+  							<option>Asheville</option>
+						    <option>Miami</option>
+						    <option>New York</option>
   						</select>
   					</li>
   					<li>
   						<select class="form-control js-selectbox" title="Zip code">
-  							<option>City</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
+  							<option>28803</option>
+						    <option>07740</option>
+						    <option>21221</option>
   						</select>
   					</li>
   					<li>
   						<select class="form-control js-selectbox" title="Type">
-  							<option>City</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
+  							<option>Single Family</option>
+                <option>Multi-Family</option>
+                <option>Commercial</option>
+                <option>Land</option>
+                <option>Rentals</option>
   						</select>
   					</li>
   					<li>
   						<select class="form-control js-selectbox" title="Max Price">
-  							<option>City</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
+  							<option>0 - 50,000</option>
+    						<option>50,000 - 100,000</option>
+    						<option>100,000 - 200,000</option>
+                <option>200,000 - 300,000</option>
+                <option>300,000 +</option>
   						</select>
   					</li>
   				</ul>
-  				<button type="button" class="btn btn-primary search-btn">Search</button>
+  				<a href="search.php"><button type="button" class="btn btn-primary search-btn">Search</button></a>
   			</div>
   			<a href="#" class="advance-search">Advanced Search</a>
   		</div>
