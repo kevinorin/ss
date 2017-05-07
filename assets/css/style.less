@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i');
 
-@import "variables.less";
-@import "acc.less";
-@import "components.less";
-@import "compositor.less";
+@import "_variables.less";
+@import "_acc.less";
+@import "_components.less";
+@import "_compositor.less";
+@import "_bootstrap-select.less"; 
 
 
 /*.layoutRow .layoutRowStage:first-child{border-left: 0px solid white;padding-left: 0px;}*/
@@ -20,7 +21,7 @@ height: 70%; color: white !important; 	background-color: #33B0CC  !important;fon
 	line-height: 26.4px;
 	margin-right: 2em;
 }
-h3 {
+/*h3 {
 	font-size: 14px;
 	font-style: normal;
 	font-variant: normal;
@@ -72,7 +73,7 @@ hr {
 	color: @ltgrey;
 	height: 1px;
 	border-bottom: 1px solid #E8E8E8;
-}
+}*/
 
 doctype {
 	height: 100%;
@@ -432,18 +433,23 @@ h4 {
 		}
 	}
 }
+
 .Banner {
 	overflow: hidden;
 	position: relative;
 	width: 100%;
 	height: 607px;
-	padding-top: 70px;
+	padding-top: 0;
 	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;
 	.ComponentLayout {
-		position: static;
 		position: relative;
+	}
+}
+.navbar-fixed-top {
+	.Banner{
+		padding-top:70px;
 	}
 }
 .carousel-caption {
@@ -455,7 +461,6 @@ h4 {
 }
 .Banner4 {
 	.carousel-caption {
-		margin: 0 0 10px;
 		padding: 0 0 10px;
 		bottom: 0;
 		text-align: left;
@@ -558,7 +563,7 @@ h4 {
 	}
 }
 .property-detail {
-	color: @color_3;
+	color: @white;
 	background-color: @background_color_19;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
@@ -608,7 +613,7 @@ h4 {
 	max-width: 660px;
 	display: inline-block;
 	vertical-align: middle;
-	color: @color_3;
+	color: @white;
 	h1 {
 		margin-bottom: 5px;
 		margin-top: 0;
@@ -657,9 +662,9 @@ h4 {
 }
 
 #content {
-	padding-top: 110px !important;
+	padding-top: 110px;
 	&.home {
-		padding-top: 30px !important;
+		padding-top: 30px;
 	}
 }
 .agent-detail {
@@ -784,6 +789,15 @@ h4 {
 		color: @ltblack;
 		border-color: @border_color_2;
 		line-height: 22px;
+		.caret{
+			&:before{
+				font-family:'FontAwesome';
+				content:"\f107";
+				position:absolute;
+				top:0;
+				left:7px;
+			}
+		}
 	}
 	>.dropdown-toggle.bs-placeholder {
 		color: @ltblack;
@@ -1350,6 +1364,11 @@ textarea.form-control {
 	.Banner {
 		height: 500px;
 	}
+	.Banner3{ 
+		.agent-detail{
+			display: inline-block;
+		}
+	}
 	.carousel-control {
 		left: 0;
 		font-size: 40px;
@@ -1482,6 +1501,11 @@ textarea.form-control {
 	}
 	.contact-map {
 		height: 180px;
+	}
+	.share-btns {
+		a{
+			min-width: 111px;
+		}
 	}
 	.prod-feature {
 		li {
