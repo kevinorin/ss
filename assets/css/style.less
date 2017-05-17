@@ -373,8 +373,8 @@ h4 {
 }
 .navbar-default {
 	background-color: @white;
-	-webkit-box-shadow:0 2px 8px rgba(0, 0, 0, 0.4);
-	box-shadow:0 2px 8px rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow:0 0 5px #bdbdbd;
+	box-shadow:0 0 5px #bdbdbd;
 	.navbar-toggle {
 		border-color: @border_color_1;
 		.icon-bar {
@@ -709,7 +709,7 @@ h4 {
 		color: @dkgrey;
 		margin: 0;
 		font-size: 15px;
-		line-height: 18px;
+		line-height: 20px;
 		a {
 			color: @inherit;
 		}
@@ -758,7 +758,7 @@ h4 {
 	>li {
 		list-style: none;
 		float: left;
-		width: 25%;
+		width: 20%;
 		padding: 0 6px;
 		margin-bottom: 10px;
 	}
@@ -791,7 +791,7 @@ h4 {
 		font-weight: 400;
 		color: @ltblack;
 		border-color: @border_color_2;
-		line-height: 22px;
+		line-height: 20px;
 		.caret{
 			&:before{
 				font-family:'FontAwesome';
@@ -861,18 +861,19 @@ h4 {
 		h3 {
 			margin: 0;
 			font-weight: 400;
+			color: @black;
 		}
 		p {
-			color: @dkgrey;
+			color: @drmdgrey;
 			margin: 0;
-			height: 18px;
+			height: 24px;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
 		}
 		.price {
 			font-size: 18px;
-			color: @aqua;
+			color: @drmdgrey;
 			font-weight: 700;
 			display: block;
 			margin-bottom: 26px;
@@ -886,7 +887,7 @@ h4 {
 				padding: 0 6px;
 				position: relative;
 				line-height: 14px;
-				color: @black;
+				color: @drmdgrey;
 			}
 			li&+li {
 				border-left: 1px solid #000;
@@ -1428,6 +1429,9 @@ textarea.form-control {
 	.select-group {
 		>li {
 			width: 50%;
+			&.first-li{
+				width: 100%;
+			}
 		}
 	}
 	.toolbar {

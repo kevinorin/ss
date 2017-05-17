@@ -2,13 +2,12 @@
 <head>
 	<?php include_once("head.php"); ?>
 	<title>Suite Space</title>
-
 </head>
 
 <body class="sheer home">
 	<div id="wrapper">
 		<?php include_once("header.php"); ?>
-
+    
 	<!-- Banner Start -->
   <section id="banner">
   	<div class="banner-slider">
@@ -117,32 +116,35 @@
   		<div class="panel-block search-bar">
   			<div class="search-fields">
   				<ul class="select-group clearfix">
-  					<li>
-  						<select class="form-control js-selectbox" title="city">
-  							<option>City</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
-  						</select>
-  					</li>
-  					<li>
-  						<select class="form-control js-selectbox" title="Zip code">
-  							<option>City</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
+  					<li class="first-li">
+  						<select class="form-control js-selectbox" title="Neighborhood">
+  							<option>Neighborhood</option>
+    						<option>Ketchup</option>
+    						<option>Relish</option>
   						</select>
   					</li>
   					<li>
   						<select class="form-control js-selectbox" title="Type">
   							<option>City</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
+    						<option>Ketchup</option>
+    						<option>Relish</option>
   						</select>
   					</li>
+            <li>
+              <input type="text" class="form-control" placeholder="Zip Code">
+            </li>
+            <li>
+              <select class="form-control js-selectbox" title="Min.Price">
+                <option>City</option>
+                <option>Ketchup</option>
+                <option>Relish</option>
+              </select>
+            </li>
   					<li>
-  						<select class="form-control js-selectbox" title="Max Price">
+  						<select class="form-control js-selectbox" title="Max.Price">
   							<option>City</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
+    						<option>Ketchup</option>
+    						<option>Relish</option>
   						</select>
   					</li>
   				</ul>
@@ -341,8 +343,6 @@
 
 	<?php include_once("footer.php"); ?>
 </div><!--wrapper -->
-
-
 </body>
 </html>
 
