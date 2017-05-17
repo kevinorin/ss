@@ -1265,7 +1265,7 @@ h1,
 }
 h2,
 .h2 {
-  font-size: 30px;
+  font-size: 24px;
 }
 h3,
 .h3 {
@@ -3107,7 +3107,7 @@ select[multiple].input-lg {
   user-select: none;
   background-image: none;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 .btn:focus,
 .btn:active:focus,
@@ -7323,7 +7323,7 @@ a:focus {
   width: 100%;
 }
 .navbar-nav > li > a {
-  font-size: 18px;
+  font-size: 16px;
   padding-left: 20px;
   padding-right: 10px;
   position: relative;
@@ -7335,7 +7335,6 @@ a:focus {
   top: 0;
   height: 0;
   width: 5px;
-  background-color: #55bfd5;
 }
 .navbar-nav > li > a:hover:after,
 .navbar-nav > li > a:focus:after {
@@ -7367,6 +7366,10 @@ a:focus {
 .nav-icons li a img {
   max-width: 21px;
 }
+.logout{
+  color:#a4a4a4;
+  text-decoration: none !important;
+}
 /* header End
 -------------------------------------------------- */
 /* content Start 
@@ -7392,6 +7395,10 @@ a:focus {
 }
 .listing-table .label {
   margin-left: 4px;
+}
+.listing-table table td:first-child {
+    font-size: 24px;
+    font-weight: bold;
 }
 .admin-form {
   padding-top: 20px;
