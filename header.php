@@ -1,4 +1,5 @@
 <!-- Header Start -->
+<?php $file = basename($_SERVER['PHP_SELF']);?>
 <header id="header" class="navbar navbar-default navbar-fixed-top"> <!-- IF you want to header transparent, add only this two classes with nav bar "header-trans navbar-transparent" -->
 	<div class="container">
     <div class="navbar-header">
@@ -17,12 +18,12 @@
     <nav id="nav">
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.php">Home</a></li>
-          <li><a href="listings.php">Listings</a></li>
-          <li><a href="about.php">About</a></li>
-          <li><a href="blog.php">Blog</a></li>
-          <li><a href="contact.php">Contact</a></li>
-          <li><a href="search.php">Search Properties</a></li>
+          <li class="<?php echo $file=="index.php"?"active":"";?>"><a href="index.php">Home</a></li>
+          <li class="<?php echo $file=="listings.php"?"active":"";?>"><a href="listings.php">Listings</a></li>
+          <li class="<?php echo $file=="about.php"?"active":"";?>"><a href="about.php">About</a></li>
+          <li class="<?php echo $file=="blog.php"?"active":"";?>"><a href="blog.php">Blog</a></li>
+          <li class="<?php echo $file=="contact.php"?"active":"";?>"><a href="contact.php">Contact</a></li>
+          <li class="<?php echo $file=="search.php"?"active":"";?>"><a href="search.php">Search Properties</a></li>
         </ul>
       </div>
     </nav>
