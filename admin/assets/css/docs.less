@@ -28,7 +28,7 @@ a{
 /* header Start 
 -------------------------------------------------- */
 #header {
-	padding-left: 20px; position: fixed;top: 0;bottom: 0;left: 0;min-height: 100%;width: 220px;border-right: 1px solid @grey;z-index: 99;
+	padding-left: 20px; position: fixed;top: 0;bottom: 0;left: 0;min-height: 100%;width: 220px;z-index: 99;
 }
 .header-inner{
 	height: 100%;overflow: auto;padding-top: 30px;padding-bottom: 30px;
@@ -41,7 +41,7 @@ a{
 	>li{
 		margin: 5px 0;display: inline-block;width: 100%;
 		>a{
-			font-size: 18px;padding-left: 20px;padding-right: 10px;position: relative;
+			font-size: 16px;padding-left: 20px;padding-right: 10px;position: relative;
 			&:after{
 				content: "";position: absolute;left: 0;top: 0;height: 0; width: 5px;background-color: @cyan;
 			}
@@ -70,11 +70,26 @@ a{
 	li{
 		list-style: none;
 		a{
-			display: block;padding: 15px 0;
+			display: block;
+			padding: 15px 0;
+			color:@ltgrey;
 			img{
 				max-width: 21px;
 			}
+			&:hover,
+			&:focus{
+				color:@cyan;
+			}
 		}
+	}
+}
+
+.center-dropdown{
+	.dropdown-menu{
+		left:50%;
+		min-width:100px;
+		-webkit-transform:translateX(-50%);
+		transform:translateX(-50%);
 	}
 }
 
@@ -113,6 +128,11 @@ a{
 }
 
 .admin-form{padding-top: 20px;border-top: 1px solid #e8e8e8;}
+.action-option{
+	width:30px;
+	text-align:center;
+}
+.action-option a.setting-icon{display:block;}
 .photo-arrange{ 
 	ul{
 		padding: 0;margin: 0 -10px;
@@ -135,10 +155,20 @@ a{
 .image-block{ 
 	button{border: none;background-color: transparent;padding: 0;position: absolute;bottom: -25px;right: 8px;color: #dbdbdb;font-size: 20px;}
 }
+.setting-block .nav-tabs{
+	overflow:auto;
+}
+
+.setting-block .nav-tabs>li{
+	float:none;
+	display:table-cell;
+	vertical-align:middle;
+}
 
 .btn.btn-select{padding: 6px 15px;border: 2px solid #eaeaea;background-color: transparent;height: 50px;}
 .js-selectbox.open .btn.btn-select{border-color:@cyan;}
-
+.heading-left{float: left;}
+.heading-right{float: right;}
 .panel-block{border: 2px solid #eaeaea;}
 .editor-block{overflow: hidden;}
 .panel-block.add-new-item{border: none;}
@@ -238,6 +268,7 @@ a{
 
 .logo-part p{color: #aeaeae;}
 .form-group{display: inline-block;width: 100%;}
+.setting-icon{display:inline-block;}
 
 /* content End
 -------------------------------------------------- */
@@ -248,8 +279,7 @@ a{
 @media (min-width: 768px) {
 #wrapper {margin-left: 220px;}
 #content {padding-left: 20px;}
-.heading-left{float: left;}
-.heading-right{float: right;}
+
 }
 
 @media (max-width: 991px) {
@@ -271,7 +301,44 @@ a{
 .navbar-nav{margin: 0;}
 #content{padding-top: 70px;}
 .map{height: 280px;}
-.heading-right.text-right{text-align: left;margin-top: 20px;}
+.heading-right.text-right{text-align: left;margin-top: 0;}
+
+.table-responsive{
+	border:none;
+}
+.table-responsive.mob-no-res{
+	overflow:visible;
+}
+.heading-title{ 
+	.flot-non-xs{
+		float:none;
+		+.flot-non-xs{
+			margin-top:20px;
+		}
+	}
+}
+.setting-icon{
+	float:right;
+}
+.table-large.table{ 
+	> tbody{ 
+		> tr{ 
+			> td{
+					padding:15px 10px;
+					vertical-align:middle;
+				}
+			}
+		}
+	}
+
+}
+
+.text-elips{
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 254px;
+    overflow: hidden;
+    display: block;
 }
 
 @media (max-width: 480px) {

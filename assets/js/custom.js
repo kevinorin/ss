@@ -7,6 +7,9 @@ $(window).load(function(){
 });
 // Document Ready
 $(document).ready(function(){
+
+	navfixed();
+
 	// Jquery Selectbox
 	if($('.js-selectbox').length){
 		$('.js-selectbox').selectpicker({
@@ -27,4 +30,18 @@ $(document).ready(function(){
 		//Default is 75px, set to 0 for demo so any distance triggers swipe
 		threshold:0
 	});
+
+
 });
+
+//Fixed nav bar on top
+function navfixed(){
+	$(window).bind('scroll', function() {
+		if ($(window).scrollTop() <= 100) {
+			$('.header-trans').addClass('navbar-transparent');
+		}
+		else {
+		 	$('.header-trans').removeClass('navbar-transparent');
+		}
+	});
+}

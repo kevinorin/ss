@@ -370,6 +370,8 @@ h4 {
 	margin: 0;
 	min-height: 10px;
 	z-index:99;
+	-webkit-transition:all 0.4s ease-in-out;
+	transition:all 0.4s ease-in-out;
 }
 .navbar-default {
 	background-color: @white;
@@ -433,6 +435,37 @@ h4 {
 	>li {
 		>a {
 			padding: 12px 28px;
+		}
+	}
+}
+
+.navbar-brand {
+	.white-logo{display:none;}
+}
+
+.navbar-transparent{
+	background-color:transparent;
+	webkit-box-shadow:none;
+	box-shadow:none;
+	.navbar-brand{
+		.white-logo{
+			display:block;
+		}
+		.black-logo{
+			display:none;
+		}
+	}
+	.navbar-nav{ 
+		> li{ 
+			> a{
+				color:@white;
+				&:focus {
+					color: @white;
+				}
+				&:hover {
+					color: @white;
+				}
+			}
 		}
 	}
 }

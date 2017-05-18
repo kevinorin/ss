@@ -81,8 +81,6 @@
 
   <?php include_once("footer.php"); ?>
 </div><!--wrapper -->
-
-
 </body>
 </html>
 
