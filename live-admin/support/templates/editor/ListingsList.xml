@@ -1,0 +1,60 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:ListingsList type="json">
+	{
+		"listings":
+		{
+			"id" : "_self_id",
+            "agent":"usr",  
+            "type":"kind",
+            "status":"state",
+            "title":"heading",
+            "mlsnumber":"MLS",
+            "price":"cost",
+            "beds":"rooms",
+            "baths":"restrooms",
+            "area":"size",
+            "tags":"facts",
+            "features":"features",
+            "unparsed_addr":"address",
+			"description" : "networkID"
+		}        
+	}
+	</Component:ListingsList>
+	<Render:Markup bind="Listing">
+<form data-action="dataset://listings" >
+<input name="_heading" placeholder="Listing Title" value="[@ heading @]" /><br />
+<div class="modal-content Content">
+<input name="__self_id" type="hidden" value="[@ _self_id @]" /><br />
+<input name="_usr" type="hidden" value="[@ usr @]" /><br />
+<select name="_kind" ><br /><option value="1" selected="selected" >Regular</option>
+<option value="2" >Featured</option>
+</select>
+<br />
+
+<select name="_state" ><br /><option value="1" selected="selected" >Active</option>
+<option value="2" >Expired</option>
+</select>
+<br />
+
+<input name="_MLS" placeholder="MLS Number" value="[@ MLS @]" /><br />
+<input name="_cost" placeholder="Price" value="[@ cost @]" /><br />
+<input name="_rooms" placeholder="Bedroom(s)" value="[@ rooms @]" /><br />
+<input name="_restrooms" placeholder="Bathroom(s)" value="[@ restrooms @]" /><br />
+<input name="_size" placeholder="SQ FT." value="[@ size @]" /><br />
+<textarea rows="5" name="_networkID"  class="RichTextArea" >[@ networkID @]</textarea>
+
+</div>
+
+
+
+  <div class="modal-footer">
+      <ul class="controls" style="display: inline-block; float:right;">
+          <li class="control" data-context='{"_self_id":"[@ _self_id @]", "presentation":"standard", "_response_target":"#ListingsLibrary > tr:has(td > ul.controls > li[data-self=[@ _self_id @]]) "}' data-role="autoform" data-intent='{"REFRESH":{"ListingsList":"Save"}}'>
+          <button type="button" class="btn btn-primary btn-default" data-dismiss="modal">Save</button>
+          </li>
+      </ul>
+      <button type="button" class="btn btn-default btn-warning" data-dismiss="modal" style="float: left;">Cancel</button>
+  </div>  
+  </form>
+	</Render:Markup>
+</Template>

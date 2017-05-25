@@ -1,0 +1,50 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:LeadGeneration type="json">
+	{
+		"users":
+		{
+			"id" : "_self_id",
+			"display_name" : "agent",
+			"profile" : "messagePost",
+			"href":"link",
+            "firm_name": "broker",
+            "tele" : "phone",
+            "addr_01" : "addr_01",
+            "addr_02" : "addr_02",
+            "thumbnail" : "profile",
+			"typeopt":"leadOpts"
+		}
+	}
+	</Component:LeadGeneration>
+	<Render:Markup bind="LeadGeneration">
+<div class="modal-content col-sm-12 col-md-12 Content" style="padding: 0px">
+  <form method="post" data-action="service://support">
+  <input name="__self_id" type="hidden" value="[@ _self_id @]" />
+  <div class="modal-header col-sm-12 col-md-12">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#215;</button>
+    Lead Generation
+  </div>
+
+<div class="modal-body col-sm-12 col-md-12">
+<div class="col-md-4 control-label" for="leadgeneration">Lead Generation Type</div>
+<div class="col-md-8">
+<select class="col-md-12 col-sm-12 form-control" name="_leadOpts">
+<option value="1">Form</option>
+<option value="2">Form w/Agent</option>
+<option value="3">Button</option>
+</select>
+</div>   
+</div>
+
+  <div class="modal-footer col-sm-12 col-md-12">
+      <ul class="controls" style="display: inline-block; float:right;">
+          <li class="control" data-context='{"_self_id":"", "_response_target":"matchElement(\"LeadGeneration\",[@ _self_id @])"}' data-role="autoform" data-intent='{"REFRESH":{"LeadGeneration":"Save"}}'>
+          <button type="button" class="btn btn-primary btn-default">Save</button>
+          </li>
+      </ul>
+      <button type="button" class="btn btn-default btn-warning" data-dismiss="modal" style="float: left;">Cancel</button>
+  </div>  
+  </form>
+</div>
+	</Render:Markup>
+</Template>

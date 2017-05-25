@@ -1,0 +1,15 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:TextEmbed type="json">
+	{
+		"text_embeds":
+		{
+			"id" : "_self_id",
+            "agent":"usr",
+			"embed" : "content"
+		}
+	}
+	</Component:TextEmbed>
+	<Render:Markup bind="TextEmbed">
+    <div class="embedded_text">[@ content @]</div>
+	</Render:Markup>
+</Template>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html ><head >
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--link href="https://static.myrealestatesite.co/css/toolkit-light.css" rel="stylesheet"-->
+<!-- link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" -->
+<link href="https://static.myrealestatesite.co/css/component.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/91cc4ee1af.css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<link href="https://static.myrealestatesite.co/css/style.css" rel="stylesheet" />
+<link href="https://static.myrealestatesite.co/css/components.css?true" rel="stylesheet" />
+<link href="https://static.myrealestatesite.co/css/compositor.css" rel="stylesheet" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<!--script type="text/javascript" src="https://static.myrealestatesite.co/js/chart.js"></script-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+
+<!--script type="text/javascript" src="https://static.myrealestatesite.co/js/toolkit.js"></script>
+<script type="text/javascript" src="https://static.myrealestatesite.co/js/application.js"></script>
+<script type="text/javascript" src="https://static.myrealestatesite.co/js/optimal-select.min.js"></script-->
+<script type="text/javascript" src="https://static.myrealestatesite.co/js/acc.js?true=true"></script>
+<script type="text/javascript" src="https://static.myrealestatesite.co/js/compositor.js"></script>
+
+<title>Visual Realty</title>
+
+<script>
+document.domain = 'myrealestatesite.co';
+$(document).ready(function() 
+{
+    $('.addComponentBtn').click(addComponent);
+    $('.ComponentBtns').click(ComponentAdded);
+    $('.deleteRow').click(remRow);	
+    Interface.prototype.getSelectedStage = function(support){ return $(ActiveStage).find('.addComponentBtn').last();    };
+    Interface.prototype.selectedComponent = function(support) { return $(ActiveLayoutComponent) };
+	$('#PreviewLayout').click(PreviewLayout);
+	$('#SaveLayout').click(SaveLayout);
+	$('.rowSettingsSave').click(RowSettings);
+ 	$('.editRow').click(EditRow);
+    $('.Interface').each(function(instance, Markup){ Markup.Interface=new Interface(Markup);	});
+    $('#layoutCanvas').sortable({stop:onSort, handle: '.moveRow'});
+    
+//    $(document).on('ajaxSuccess', function(){ $(document).find('.richTextEdit').wysiwyg(); });
+});
+
+//end </script>
+</head>
+
+<link href="https://static.myrealestatesite.co/css/components.css" rel="stylesheet" />
+
+<!-- " counters(layoutRow,"_") " -->
+<body class="sheer">
+<!--div id="Stage"  class="container" style="margin: 0px; margin-top: 8px;" -->
+<ul  id="AdminNav" class="nav col-sm-2 row" style="height: 90%; position: relative; top: 0px; left: 0px; " >
+	 <li style="height: 3em;"><img style="margin-left: -1em; height: 100%; " src="VRlogo.png" /></li>
+	  <li><a data-toggle="tab" href="#component_library">Listings</a></li>
+	  <li><a data-toggle="tab" href="#component_settings">Leads</a></li>
+	  <li><a data-toggle="tab" href="#component_settings">Pages</a></li>
+	  <li><a data-toggle="tab" href="#component_settings">Posts</a></li>
+	  <li><a data-toggle="tab" href="#component_settings">Media</a></li>
+	  <li><a data-toggle="tab" href="#component_settings">Settings</a></li>	  
+	  <li><a data-toggle="tab" href="#component_settings">Support</a></li>
+	  <li class="active"><a data-toggle="tab" href="#component_settings">Settings</a></li>
+</ul>
+
+<ul  class="nav col-sm-10 content row" style="height: 90%; position: relative; top: 0px; left: 0px;" >
+	 <li id="ContentHeader"  style="height: 3em; position: relative; vertical-align: middle; margin-bottom: 28px; ">
+		 <span style="float: left;"><h1>New Page</h1></span>
+		 <span style="float: right;" id="PreviewLayout"> <a class="btn btn-primary btn-lg" style="background-color: #74959E;" href="#" role="button">Preview</a></span>
+		 <span style="float: right;" id="SaveLayout"> <a class="btn btn-primary btn-lg" style="background-color: #27B1CE;" href="#" role="button">Update</a></span>
+	 </li>
+	<li><hr /></li>
+	<li>
+        <ul id="layoutCanvas" style="min-height: 38em;">
+		<li id="layoutRow_1" class="panel panel-default col-sm-12 layoutRow" data-layoutnid="1" data-self="" data-instance=""  data-colschema="12">
+			<div class="layoutRowStage col-xs-12 col-sm-12 col-md-12 col-lg-12 " data-colindex="0">
+				<a href="#" class="addComponentBtn btn layoutBtn" data-toggle="modal" data-target="#ComponentLibrary" > <i class="fa fa-plus"></i> </a>
+			</div>
+			<div class="layoutRowController controls selectable instance" data-self="" data-instance="0">
+                <span class="moveRow"><i class="fa fa-arrows"></i></span><span class="editRow" data-toggle="modal" data-target="#rowSettingsModal" ><i class="fa fa-pencil"></i></span><span class="deleteRow"><i class="fa fa-trash"></i></span>
+            </div>
+		</li>
+        </ul>
+	</li>
+</ul>
+
+
+<ul id="ComponentLibrary"  tabindex="-1" role="dialog" aria-labelledby="ComponentLibrary" aria-hidden="true" style="display: none; max-height: 80%; overflow: hidden; padding-top:3em; padding-bottom:2em; margin: 0em;"  class="fade nav nav-tabs col-sm-12 modal ComponentLibrary" >
+    <li class="col-sm-12" style="position:absolute; z-index: 50; border-bottom: 1px solid #707070; top:0px;"><h1>Component Library</h1></li>
+    <li class="col-sm-12 Interface controls" style="height:100%; padding: 3em 0em; z-index:20; overflow: auto;">
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"PREFIX":{"Banner":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="Banner">Banner</div><div class="col-sm-2"></div>
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"PREFIX":{"Listing":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="Listing">Listings</div><br />
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"PREFIX":{"Youtube":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="Youtube">Youtube</div><div class="col-sm-2"></div>
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"PREFIX":{"Vimeo":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="Vimeo">Vimeo</div><br />
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"PREFIX":{"TextEmbed":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="Text">Text</div><div class="col-sm-2"></div>
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"PREFIX":{"ImageRow":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="ImageRow">Image</div><br />
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"PREFIX":{"ButtonRow":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="ButtonRow">Button</div><div class="col-sm-2"></div>
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"PREFIX":{"LeadGeneration":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="LeadGeneration">Lead Generation</div><br />
+    </li>
+	<li style="width:100%; text-align: right; position:absolute;border-top: 1px solid #707070; z-index: 50; bottom: 0px;"><button type="button" class="close" style="font-size: 24px; display: inline-block; float:right;" data-dismiss="modal">CLOSE</button></li>
+</ul>
+<div data-backdrop="false" aria-hidden="true" style="display: none;" aria-labelledby="rowSettingsModal" class="modal fade" id="rowSettingsModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" style="width: 32em;">
+      <div class="LayoutRow Interface modal-content" data-component="LayoutRow">
+	    <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4>Row Settings</h4>
+			<ul class="nav nav-tabs">
+				<li class="nav-item"><a class="nav-link active" href="#rowSettingCol" data-toggle="tab">Columns</a></li>
+				<li class="nav-item"><a class="nav-link" href="#rowSettingBG" data-toggle="tab">Background</a></li>
+			</ul>
+        </div>
+		<div class="modal-body InterfaceContent">
+			<form method="post" data-action="dataset://layouts">
+			<input type="hidden" name="__self_id" value="" />
+			<div class="tab-content">
+				<div class="tab-pane active" id="rowSettingCol">
+					<div class="ColumnButtonHack" data-colopts="[12]">
+						<label><img src="https://static.myrealestatesite.co/img/Columns.png" style="width: 64px; height: 100%;" class="sheer" />
+						<span>1/1</span>
+						<input name="_colopts" type="radio" value="12"  style="float: right;"/>
+						</label>
+					</div>
+					<div class="ColumnButtonHack" data-colopts="[6,6]">
+						<label><img src="img/Columns.png" style="width: 31px; height: 100%;" class="sheer" />
+						<img src="img/Columns.png" style="width: 31px; height: 100%;" class="sheer" />
+						<span>1/2 + 1/2</span>
+						<input name="_colopts" type="radio" value="6,6"  style="float: right;"/>
+						</label>
+					</div>
+					<div class="ColumnButtonHack" data-colopts="[4,8]">
+						<label><img src="img/Columns.png" style="width: 16px; height: 100%;" class="sheer" />
+						<img src="img/Columns.png" style="width: 46px; height: 100%;" class="sheer" />
+						<span>1/3 + 2/3</span>
+						<input name="_colopts" type="radio" value="4,8"  style="float: right;"/>
+						</label>
+					</div>
+					<div class="ColumnButtonHack" data-colopts="[8,4]">
+						<label><img src="img/Columns.png" style="width: 46px; height: 100%;" class="sheer" />
+						<img src="img/Columns.png" style="width: 16px; height: 100%;" class="sheer" />
+						<span>2/3 + 1/3</span>
+						<input name="_colopts" type="radio" value="8,4"  style="float: right;"/>
+						</label>
+					</div>
+					<div class="ColumnButtonHack" data-colopts="[4,4,4]">
+						<label><img src="img/Columns.png" style="width: 19px; height: 100%;" class="sheer" />
+						<img src="img/Columns.png" style="width: 20px; height: 100%;" class="sheer" />
+						<img src="img/Columns.png" style="width: 20px; height: 100%;" class="sheer" />
+						<span>1/3 x 3</span>
+						<input name="_colopts" type="radio" value="4,4,4"  style="float: right;"/>
+						</label>
+					</div>
+					<div class="ColumnButtonHack" data-colopts="[3,3,3,3]">
+						<label><img src="img/Columns.png" style="width: 13px; height: 100%;" class="sheer" />
+						<img src="img/Columns.png" style="width: 14px; height: 100%;" class="sheer" />
+						<img src="img/Columns.png" style="width: 13px; height: 100%;" class="sheer" />
+						<img src="img/Columns.png" style="width: 14px; height: 100%;" class="sheer" />
+						<span>1/4 x 4</span>
+						<input name="_colopts" type="radio" value="3,3,3,3"  style="float: right;"/>
+						</label>
+					</div>
+				</div>
+				<div class="tab-pane" id="rowSettingBG">
+					<div class="form-group">
+							<label class="control-label" for="addimage">Background Image</label>
+							<button id="addimage" name="addimage" class="btn btn-primary">Add Image</button>					
+							<br />
+							<br />
+							<br />
+							<label class="control-label" for="_enable">Color Overlay</label>
+							<input type="color" name="_bgcolor" value="#ff0000" style="width:8em;" name="_bgcolor" /><br/>
+							<span class="pull-right">
+								<input type="radio" name="_enable" value="0" /> Off </span>
+							<span class="pull-right">
+								<input type="radio" name="_enable" value="1" /> On </span>
+							<br />
+							<br />
+
+							<!-- Select Basic -->
+							<label class="control-label" for="_overlaytransparency">OverlayTransparency</label>
+							<select name="_overlaytransparency" class="form-control">
+								<option value="9">100%</option>
+								<option value="9">90%</option>
+								<option value="8">80%</option>
+								<option value="7">70%</option>
+								<option value="6">60%</option>
+								<option value="5">50%</option>
+								<option value="4">40%</option>
+								<option value="3">30%</option>
+								<option value="2">20%</option>
+								<option value="1">10%</option>
+								<option value="1">0%</option>
+							</select>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+					</div>
+				</div>
+
+			</div>
+			</form>						
+		</div>
+		<div class="modal-footer c_ontrol">
+	      <ul style="display: inline-block; float:right;">
+	          <li class="rowSettingsSave c_ontrol" data-context='{"_self_id":"", "_response_target":"matchElement(\"LayoutRow\",)"}' data-role="autoform" data-intent='{"REFRESH":{"LayoutRow":"Save"}}'>
+	          <button type="button" class="btn btn-primary btn-default">Save</button>
+	          </li>
+	      </ul>
+	      <button type="button" class="btn btn-default btn-warning" data-dismiss="modal" style="float: left;">Cancel</button>
+		</div>
+	  </div>
+    </div>
+</div>
+<div data-backdrop="false" aria-hidden="true" style="display: none; max-width:50%;" aria-labelledby="componentSettingsModal" class="modal modal-sm fade" id="componentSettingsModal" tabindex="-1" role="dialog">
+	<div id="componentSettingsStage"></div>
+</div>
+
+
+</body>
+</html>

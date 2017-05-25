@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ><head >
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="http://static.myrealestatesite.co/css/component.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/91cc4ee1af.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+<link rel="stylesheet" href="components.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://static.myrealestatesite.co/js/tablesorter.min.js"></script>
+<script type="text/javascript" src="http://static.myrealestatesite.co/js/acc.js"></script>
+<title>Visual Realty</title>
+
+</head>
+
+
+
+<body  class="sheer" >
+
+	<ul style="height: 90%;"  class="nav col-sm-1 content row" >
+	<li id="LeftMargin">	</li>
+	</ul>
+
+
+<ul style="height: 90%;"  class="nav col-sm-10 content row" >
+	<li id="ContentHeader" class="col-sm-12" >
+		<span style="float: left;"><h1>Column Sandbox</h1></span>
+	</li>
+
+
+
+
+	<li id="Stage Content" class="col-sm-3" >
+
+
+<div data-backdrop="false" aria-hidden="true" style="display: block; max-width: 50%;" aria-labelledby="componentSettingsModal" class="modal modal-sm fade in" id="componentSettingsModal" tabindex="-1" role="dialog">
+	<div id="componentSettingsStage" class="Banner Interface">
+	<div class="modal-content Content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h4>Banner Settings</h4>
+	  </div>
+
+	<form method="post" action="dataset://banners">
+		<div class="modal-body settingsmodal">
+
+				<fieldset>
+				<input type="hidden" name="___self_id" value="" data-field="id" class="form-control json-data"></input>
+					<br>
+					<span>Banner Type</span>
+					<br>
+					<select name="bannerType">
+						<option value="0">Text overlay</option>
+						<option value="1">Listing overlay box</option>
+						<option value="2">Agent info Overlay</option>
+						<option value="3">Listing info </option>
+						<option value="4">No overlay</option>
+						<option value="4">No banner</option>
+					</select>
+					<br>
+					<div class="col-sm-12"> 
+						<img src="http://static.myrealestatesite.co/img/blank.png" />
+						<br>
+						Preview
+					</div>
+					<select name="bannerAlignment">
+						<option value="0">Center</option>
+						<option value="1">Left</option>
+						<option value="2">Right</option>
+					</select>
+					<br>
+					Background image
+					<br>
+					<div class="fileinput fileinput-new" data-provides="fileinput">
+					    <span class="btn btn-default btn-file"><span>Choose file</span><input type="file" /></span>
+						<span class="fileinput-filename"></span><span class="fileinput-new">No file chosen</span>
+					</div>
+				<input type="text" data-field="networkID" name="_networkID" class="form-control json-data m-b" required="true" value="">
+				</fieldset>
+
+		</div>
+	</form>
+	<br><br>
+
+	  </div>  
+	</div>
+</div>
+
+	</li>
+
+
+
+</ul>
+
+<ul style="height: 90%;"  class="nav col-sm-1 content row" >
+	<li id="RightMargin">	</li>
+</ul>
+
+
+<!-- If you need any end-of-body javascript -->
+<script type="text/javascript" ></script>
+</body>
+</html>

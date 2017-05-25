@@ -1,0 +1,49 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+<Component:PagesList type="json">
+{
+	"compositions":
+	{
+		"id" : "_self_id",
+		"owner" : "agent",
+        "type" : "kind",
+        "title" : "heading",
+        "descript" : "about",
+        "layout_structure" : "styler",
+		"parent" : "belongs",
+        "alias" : "title"
+	}
+}
+</Component:PagesList>	
+<Render:Markup bind="PagesList">
+    <div class="InterfaceContent modal-content">
+    <form method="post" data-action="dataset://compositions">
+    <div class="Content modal-body">
+      <input name="__self_id" type="hidden" value="[@ _self_id @]" />
+      <br/>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#215;</button>
+        <h4>Page Settings</h4>
+      </div>
+
+      <label class="control-label">Nice URL</label><br/>
+      <input name="_title" value="[@ title @]" /><br/>
+    <br/>
+      <label class="control-label">Page Titlebar</label><br/>
+      <input name="_heading" value="[@ heading @]" /><br/>
+    <br/>
+      <label class="control-label">Notes</label><br/>
+      <input name="_about" value="[@ about @]" /><br/>
+    </div>
+
+  <div class="modal-footer">
+      <ul class="controls" style="display: inline-block; float:right;">
+          <li class="control" data-context='{"_self_id":"[@ _self_id @]", "_response_target":"matchElement(\"PagesList\",[@ _self_id @])"}' data-role="autoform" data-intent='{"REFRESH":{"PagesList":"Save"}}'>
+          <button type="button" class="btn btn-primary btn-default">Save</button>
+          </li>
+      </ul>
+      <button type="button" class="btn btn-default btn-warning" data-dismiss="modal" style="float: left;">Cancel</button>   
+  </div>
+  </form>
+</div>
+</Render:Markup>
+</Template>

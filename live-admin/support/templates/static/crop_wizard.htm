@@ -1,0 +1,78 @@
+<div class="modal-content Content">
+    <form method="post" action="dataset://locations">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4>New Crop</h4>
+    </div>
+    <div class="modal-body">
+     <div>
+        <label class="sr-only"><br />Rating[@ ratingRadio @]</label>
+        <div class="rating" style="display: inline-block; float: right;" >
+           <input type="radio" name="_rating" value="0" /><span class="hide"></span>
+           <input type="radio" name="_rating" value="1" /><span></span>
+           <input type="radio" name="_rating" value="2" /><span></span>
+           <input type="radio" name="_rating" value="3" checked /><span></span>
+           <input type="radio" name="_rating" value="4" /><span></span>
+           <input type="radio" name="_rating" value="5" /><span></span>
+        </div>
+        <br /><br /><br />
+     </div>
+     <div class="form-group">
+       <label class="sr-only" for="_title">Crop Name</label>
+       <input type="text" name="_title" class="form-control" placeholder="Enter Name" /><br /><br />
+     </div>
+     <div class="form-group">
+       <label class="sr-only" for="_comment">Notes</label>
+       <input type="text" name="_comment" class="form-control" placeholder="Enter Notes" /><br/><br/>
+     </div>
+     <div class="form-group">
+       <label class="sr-only" for="_street">Crop Type</label>
+       [@ cropGrowBloomRadio @]
+       <br /><br />
+     </div>
+     <div class="form-group">
+       <label class="sr-only" for="_locat">Zone</label>
+       [@ cropZoneSelect @]
+       <br /><br />
+       <label class="sr-only" for="_street">Plant Date</label>
+       <input type="text" name="_plantdate" class="form-control isDatepicker" placeholder="02/17/2016" /><br/><br/>
+       <br /><br />
+     </div>
+     <div class="form-group">
+        <label style="display: inline-block; text-align: center; width: 100%; ">
+            <span style="float:right">Plants In Crop</span>
+            <button type="button" style="float:none;margin-left:-1em;" class="round btn btn-success glyphicons left_arrow"><i></i>&nbsp;</button>
+            <button type="button" style="float:none;margin-left:1em;" class="round btn btn-success glyphicons right_arrow">&nbsp;<i></i></button>            
+            <span style="float: left;">Available Plants</span>
+        </label><br/><br/>
+        <div style="width: 100%;">
+        <!--[@ plantsAvailableSelect @] <br /-->
+            <select size="6" style="width: 49%; display: inline-block; float: left;"></select>
+        <!--[@ cropCropPlantsSelect @]<br /-->
+            <select size="6" style="width: 49%; display: inline-block; float: right;"></select>
+        </div>
+     </div>
+    </div>
+    <div class="modal-footer">
+        <ul class="controls" style="display: inline-block; float:right;">
+            <li class="control" data-context='{"_self_id":"", "_response_target":"#CropList"}' data-role="autoform" data-intent='{"REFRESH":{"Crop":"Save"}}'>
+            <button type="button" class="btn btn-primary btn-default" data-dismiss="modal" >Save</button>
+            </li>
+        </ul>
+        <button type="button" class="btn btn-default btn-warning" data-dismiss="modal" style="float: left;">Cancel</button>
+    </div>
+    </form>
+</div>
+<script>
+    $( "#CropWizard input.isDatepicker" ).datepicker({});
+    $().ready(function()
+    {
+        $('#CropWizard #add').click(function() {
+         return !$('#select1 option:selected').remove().appendTo('#select2');
+        });
+        $('#remove').click(function() {
+         return !$('#select2 option:selected').remove().appendTo('#select1');
+        });
+   });
+
+</script>

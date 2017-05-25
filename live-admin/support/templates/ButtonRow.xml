@@ -1,0 +1,18 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:ButtonRow type="json">
+	{
+		"links":
+		{
+			"id" : "_self_id",
+			"href" : "link",
+			"href_target" : "linktarget",
+			"justif" : "align",
+            "bg_color" : "color",
+            "title" : "content"
+		}        
+	}
+	</Component:ButtonRow>
+	<Render:Markup bind="ButtonRow">
+<a href="[@ link @]" style="width: 100%; display: inline-block;"><button style="width: 50%; height: 2em; font-size: larger; background-color: [@ color @]; float: [@ align @];">[@ content @]</button></a>
+	</Render:Markup>
+</Template>

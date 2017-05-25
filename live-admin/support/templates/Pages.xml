@@ -1,0 +1,39 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:PagesList type="json">
+	{
+		"compositions":
+		{
+			"owner" : "usr",
+            "type" : "kind",
+            "title" : "heading",
+            "descript" : "about",
+            "layout_structure" : "styler",
+			"id" : "_self_id",
+            "alias" : "title"
+		}
+	}
+	</Component:PagesList>	
+	<Render:Markup bind="PagesList" tag="tr" class="instance selectable" data-self="[@ _self_id @]">
+                <td class="center">[@ usr @]</td>
+                <td class="center">[@ kind @]</td>
+                <td class="center">[@ heading @]</td>
+                <td class="center">[@ title @]</td>
+                <td class="center">[@ about @]</td>
+                <td class="center"><pre>[@ styler @]</pre></td>
+                
+                <td class="center uniformjs Interface">
+                <ul class="controls" data-role="Service">
+                    <li class="control" style="float: left;" data-context='{"_self_id":[@ _self_id @], "_response_target":"#componentSettingsStage"}' data-intent='{"REFRESH":{"Pages":"Edit"}}' >
+                        <a data-toggle="modal" href="#AdminModal"><span class="fa fa-pencil nice_yellowish"><i style="font-size:24px;">&#160;</i></span></a> &#160;&#160;
+                    </li>
+                    
+                    <li style="float: left;padding-bottom: 4px;" >
+                        <a data-toggle="modal" href="//myrealestatesite.co/[@ _self_id @]?interface" alt="Layout Editor" title="Open in Layout Editor" ><span class="fa fa-newspaper-o text-info"><i style="font-size:24px;">&#160;</i></span></a> &#160;&#160;
+                    </li>
+                    <li class="control" style="float: left;padding-bottom: 4px;" data-context='{"dataset://compositions":{"__self_id":[@ _self_id @], "_response_target":"#componentSettingsStage"}}' data-intent='{"REFRESH":{"PagesList":"Delete"}}' >
+                        <a data-toggle="modal" href="#AdminModal"><span class="fa fa-trash-o text-danger"><i style="font-size:24px;">&#160;</i></span></a>
+                    </li>
+                </ul>
+                </td>
+	</Render:Markup>
+</Template>

@@ -1,0 +1,28 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:PostsList type="json">
+	{
+		"text_embeds":
+		{
+            "id" : "InstanceID",
+			"agent" : "usr",
+            "embed" : "content"
+		}
+	}
+	</Component:PostsList>	
+	<Render:Markup bind="PostsList" tag="tr" class="instance selectable" data-self="[@ InstanceID @]">
+                <td class="center col-sm-1">[@ usr @]</td>
+                <td class="center col-sm-9">[@ content @]</td>
+                <td class="center col-sm-2">
+                    <ul class="controls" data-role="Service">
+                    <li class="control" style="float: left;padding-bottom: 4px;" data-context='{"_self_id":[@ InstanceID @], "_response_target":"#componentSettingsStage"}' data-intent='{"REFRESH":{"Post":"Edit"}}' >
+                        <span data-toggle="modal" href="#AdminModal"><i class="fa fa-pencil" style="font-size:24px; color: #BbBb62; padding-right: 2em;">&#160;</i></span>
+                        <!--a  class="btn btn-small">Edit Post</a> -->
+                    </li>
+                    <li class="control" style="float: right;padding-bottom: 4px;" data-context='{"_self_id":[@ InstanceID @], "_response_target":"#componentSettingsStage"}' data-intent='{"REFRESH":{"Post":"Delete"}}' >
+                        <span data-toggle="modal" href="#AdminModal"><i class="fa fa-trash" style="font-size:24px; color: #228b22; ">&#160;</i></span>
+                        <!--a  class="btn btn-small">Edit Post</a> -->
+                    </li>
+                </ul>
+                </td>
+	</Render:Markup>
+</Template>

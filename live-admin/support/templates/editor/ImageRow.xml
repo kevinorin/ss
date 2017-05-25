@@ -1,0 +1,90 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:ImageRow type="json">
+	{
+		"media_embeds":
+		{
+			"id" : "_self_id",
+			"title" : "networkID",
+			"justif":"imageAlign",
+			"href":"link",
+			"href_target":"linktarget"
+		}        
+	}
+	</Component:ImageRow>
+	<Render:Markup bind="ImageRow">
+<div class="modal-content Content">
+  <form method="post" action="dataset://media_embeds">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#215;</button>
+    <h4>Image Row Settings</h4>
+  </div>
+
+<div class="modal-body">
+
+<form>
+    
+<fieldset>  
+<div class="form-group">
+<input type="hidden" name="__self_id" value="[@ _self_id @]" data-field="id" class="form-control json-data" />
+
+<label class="col-mid-4 control-label" for="addimage">Image</label>
+<div class="col-mid-4">
+<button name="addimage" class="btn btn-primary">Add
+Image</button>
+</div>
+</div>
+</fieldset>
+
+<fieldset>
+<div class="form-group">
+<label class="col-mid-4 control-label" for="imagealignment">Image Alignment</label>
+<div class="col-mid-4">
+<select name="_imageAlign" class="form-control">
+<option value="1">Left</option>
+<option value="2">Center</option>
+<option value="3">Right</option>
+</select>
+</div>
+</div>
+</fieldset>
+
+<fieldset>
+<div class="form-group">
+<label class="col-mid-4 control-label" for="link">Image Link</label>
+<div class="col-mid-4">
+<div class="input-group">
+<span class="input-group-addon">http://</span>
+<input name="_link" class="form-control" placeholder="" type="text">[@ link @]</input>
+</div>
+</div>
+</div>
+</fieldset>
+
+<fieldset>
+<div class="form-group">
+<label class="col-mid-4 control-label" for="linktarget">Link Target</label>
+<div class="col-mid-4">
+<select name="_linktarget" class="form-control">
+<option value="1">Open link in same window</option>
+<option value="2">Open link in new window</option>
+</select>
+</div>
+</div>
+</fieldset>
+</form>
+
+    
+</div>
+
+  <div class="modal-footer">
+      <ul class="controls" style="display: inline-block; float:right;">
+          <li class="control" data-context='{"_self_id":"", "_response_target":"matchElement(\"Youtube\",[@ _self_id @])"}' data-role="autoform" data-intent='{"REFRESH":{"Youtube":"Save"}}'>
+          <button type="button" class="btn btn-primary btn-default">Save</button>
+          </li>
+      </ul>
+      <button type="button" class="btn btn-default btn-warning" data-dismiss="modal" style="float: left;">Cancel</button>
+  </div>  
+  </form>
+</div>
+	</Render:Markup>
+</Template>

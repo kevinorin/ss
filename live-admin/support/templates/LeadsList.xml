@@ -1,0 +1,31 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:LeadsList type="json">
+	{
+		"leads":
+		{
+			"agent" : "usr",
+            "tele" : "phone",
+            "first_name" : "displayname",
+            "last_name" : "displayname",
+            "email" : "contactmail",
+            "message" : "content",
+			"id" : "InstanceID",
+            "referrer" : "cameby"
+		}
+	}
+	</Component:LeadsList>	
+	<Render:Markup bind="LeadsList" tag="tr" class="instance selectable" data-self="[@ InstanceID @]">
+                <!-- td class="center col-sm-1">[@ usr @]</td -->
+                <td class="center col-sm-2">[@ displayname @]</td>
+                <td class="center col-sm-2">[@ phone @]</td>
+                <td class="center col-sm-2">[@ contactmail @]</td>
+                <td class="center col-sm-3">[@ content @]</td>
+                <td class="center uniformjs col-sm-2">
+                <ul class="controls" data-role="Service">
+                    <li class="control" data-self="[@ InstanceID @]" style="float: left;padding-bottom: 4px;" data-context='{"dataset://leads":{"__self_id":[@ InstanceID @], "_response_target":"#LeadsLibrary > tr:has(td > ul.controls > li[data-self=[@ InstanceID @]]) "}}' data-intent='{"REMOVE":{"LeadsList":"Delete"}}' >
+                        <a><span class="fa fa-trash-o text-danger"><i style="font-size:24px; color:#228b22; ">&#160;</i></span></a>
+                    </li>
+                </ul>
+                </td>
+	</Render:Markup>
+</Template>

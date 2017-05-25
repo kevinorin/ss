@@ -1,0 +1,174 @@
+
+.modal{ left: auto !important; right: 1rem;}
+.panel{ position: relative;}
+.ComponentControl{ padding: 4px; }
+.draggable:hover{ border: 4px dotted #77C; cursor: move; z-index: 32767; }
+
+.ui-draggable-dragging
+{
+	border: 4px double blue;
+	z-index: 32767; 
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	/*filter: alpha(opacity=50);*/
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+.drop-hover, .droppable-hover{ background-color: #ffa; border: 4px double black !important; }
+
+#addRow{
+position: absolute; left: 0; top: 0;
+margin-left: -12em;
+}
+#layoutCanvas{ padding-bottom: 42px; padding-top:3em;}
+
+.addComponentBtn, .addRowBtn, .showComponentLib, #addRowBtn, #addSelectRowBtn{ vertical-align: middle; line-height: 26px; text-align: center; height: 38px; border-radius: 5px; background-color: #26B1CE; padding: 6px 12px; font-size: 24px;   color: white; display: inline-block;}
+.addComponentBtn{ background-color: #9a9a9a; }
+.smallBtn{ font-size: 12px; height: 33px; border-radius: 5px; color: white; }
+.lgBtn{ font-size: 13px; height: 38px; border-radius: 5px; color: white; }
+i:hover, i, button, button:hover { color: white;  }
+
+#addRowBtn:hover, #addSelectRowBtn:hover{ background-color: #06719E; }
+
+li{ list-style: none; }
+
+#AdminNav{ text-align: center; margin-top: 38px; }
+#ContentHeader{ margin-top: 38px; }
+
+.layoutRowStage{display: inline-block; vertical-align: middle; background-color: #6e6e6e; padding: 15px; padding-top: 1.5em; border-left: 0px solid #eaeaea; border-right: 14px solid #eaeaea; padding-left: 0px; padding-right: 0px;}
+/*.layoutRow .layoutRowStage:first-child{border-left: 0px solid white;padding-left: 0px;}*/
+
+#AdminNav a {
+  text-decoration: none;
+  position: relative;
+  color: #3366FF;
+}
+
+#AdminNav a:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0%;
+  border-left: 2px solid #3366FF;
+  transition: 0.4s;
+}
+
+#AdminNav a:hover:after {
+  height: 100%;
+}
+#AdminNav li{ height: 2em; vertical-align: middle; text-align: left; padding: 0px; padding-left: 4em; margin: 0px; font-size: 18px; }
+#AdminNav li.active a:after { height: 100% } 
+#AdminNav a{ color: #302830; } 
+
+/*
+.layoutBtn{
+height: 70%; color: white !important; 	background-color: #33B0CC  !important;font-size: 24px;padding: 16px;margin-right: 2em;
+}
+*/
+body{counter-reset: layoutRow; }
+
+.layoutRow{
+position: relative; z-index: 10; 
+background-color: #eaeaea; 
+margin: 0px; 
+min-height: 7em; 
+vertical-align: middle; text-align: center; line-height: 100%;
+margin-top: 1em;
+margin-bottom: 1.5em;
+padding: 14px;
+}
+.layoutComponent{ margin-top: 1em; margin-bottom: 2.5em; position: relative; z-index: 20; border: 14px solid #606060; }
+.layoutRowController, .layoutComponentController{ height: 37px; background-color: #e0e0e0; color: #D3D3D3; font-size: 14px; vertical-align: top; text-align: left; position: absolute; top: -37px; left: -0px; z-index: 12; padding: 0px;margin: 0px; }
+.layoutComponentController{left: -14px; }
+.layoutRow{ border-radius: 0px; }
+.layoutComponentController span, .layoutRowController span{
+line-height: 37px;
+vertical-align: top; 
+padding-left: 1.5em;
+padding-right: 1.5em;
+
+display: inline-block;
+height: 37px !important;
+border-right: 1px solid #989898; 
+color: #2F2F2F;
+}
+
+.layoutComponentController{background-color: #6e6e6e; border-color: #7b7b7b; margin-top: -14px; width: 100%; border-right: 96px; }
+.layoutComponentController span:hover{background-color: #606060; }
+.layoutComponentController span:hover:last-child{background-color: #d30000; }
+.layoutRowController span, .layoutRowController i{ background-color: #e0e0e0; border-color: #efefef; }
+.layoutRowController span:hover, .layoutRowController i:hover{ background-color: #d1d1d1;}
+.layoutRowController span:hover:last-child{ background-color: #d30000; }
+.ComponentControl:hover{ border: 8px double #acacac; cursor: pointer; }
+
+iframe{
+	max-height: 100%;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: -2px;
+}
+
+#ComponentLibrary{
+width: 50%; left: auto; right: 7% !important;
+min-height: 20px;
+max-height: 80%;
+border-radius: 5px;
+background-color: #fff;
+}
+.ColumnButtonHack {
+    width: 100%; height: 24px; overflow:hidden; display: inline-block;
+    margin: 0px; margin-bottom: 8px; margin-top: 4px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 14px;
+}
+
+.ColumnButtonHack label{ height: 24px; width: 100%;}
+.ColumnButtonHack label:hover{
+    cursor: pointer;
+    background-color: #cacaca;    
+	border: 4px solid #cacaca;
+	border-radius: 4px;
+}
+
+.ColumnButtonHack img{ display: inline-block; vertical-align: top;}
+
+.ColumnFrontEnd{
+    display: inline-block; vertical-align: middle; background-color: white; padding: 15px;
+    border-left: 2px solid #eaeaea;
+    border-right: 2px solid #eaeaea;
+    
+}
+
+
+.modal-backdrop {
+  z-index: -1 !important;
+}
+.modal-body{ background-color: #fff; }
+
+.ComponentBtns{
+    height: 5em; line-height: 5em;
+    vertical-align: middle; text-align: center;
+    cursor: pointer;
+    margin-left: -0.2em;
+    margin-right: -0.2em;
+    margin-bottom: 0.5em;
+}
+.ComponentBtns div{ color: black; background-color: #eaeae8;
+    font-size: 15pt;
+    font-weight: bold;
+    border: 2px solid #7b7b7b;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    height: 100%; width: 100%;
+    padding-left:1em;
+}
+.ComponentBtns i{ color: black; margin-right:0.5em; font-size: 22pt; vertical-align: text-top;}
+.ComponentBtns div:hover{background-color: #dadad8; border: 2px ridge #8eb4bc; }
+.ComponentBtns div:hover i{ color: #fff;}
+.layoutRow{padding-right: 0px; }
+

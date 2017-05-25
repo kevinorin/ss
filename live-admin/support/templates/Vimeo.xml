@@ -1,0 +1,15 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:Vimeo type="json">
+	{
+		"simple_embeds":
+		{
+			"id" : "_self_id",
+            "provider" : "network",
+			"embed" : "networkID"
+		}        
+	}
+	</Component:Vimeo>
+	<Render:Markup bind="Vimeo">
+<iframe src="https://player.vimeo.com/video/[@ networkID @]" style="width: 100%; max-height:100%;" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true">Sorry your browser does not support iframes.</iframe>
+	</Render:Markup>
+</Template>
