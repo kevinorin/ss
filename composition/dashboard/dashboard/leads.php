@@ -29,6 +29,7 @@ $TheList=new Smart($options);
 $options=[];
 
 $AdminContent = new renderable('table');
+$AdminContent->classes = ['table table-hover table-large'];
 $AdminContent->classes=['col-sm-12', 'row'];
 $AdminContent->children[]= $TheList;
 $AdminMain->children[]=$AdminContent;

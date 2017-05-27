@@ -21,8 +21,7 @@ $contentHeader->content='
         data-intent=\'{"REFRESH":{"Agent":"Save"}}\'
         data-role="autoform">
     <button type="button" style="background-color: #aae; color: black;">Save</button>
-</div>
-<span style="float: left;"><h1>'.Composition::$Active->Context['data']['title'].'</h1></span>';
+</div>';
 
 
 

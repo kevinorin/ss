@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once __DIR__.'/../../admin_layout.php';
 
 global $RuntimePath;
@@ -12,11 +12,15 @@ $TemplatePath = $RuntimePath.'/support/templates/';
 $items = LoadObjects( 'compositions',array( 'method' => ' WHERE parent = '.Composition::$Active->Context['data']['id'] ));
 $UserID = Composition::$Active->Context['authenticated_account']->data['id'];
 
-$contentHeader->content='<div class="heading-title clearfix"><div class="heading-left"><h2>' . Composition::$Active->Context['data']['title'] . '</h2></div><div class="heading-right text-right"><a href="listings/new" class="btn btn-primary">New Listing</a></div></div>';
+$contentHeader->content='
+<a href="listings/new" style="float: right;padding-bottom: 4px;" >
+    <button type="button" style="background-color: #aae; color: black;">New Listing</button>
+</a>';
+
+$AdminMain->children[]=new renderable(['classes'=>['col-sm-2']]);
 //$AdminMain->children[]=
 
 $opt['tag']='table';
-$opt['classes']=['table-large'];
 $opt['Component']['DashTable']['condition'] = 'WHERE `agent` = '.$UserID;
 
 $options=[];
@@ -28,10 +32,9 @@ $options['ListingsList']['listings'] = [  'select'=>' * ',    'new_query'=>true 
 $TheList=new Smart($options);
 $options=[];
 
-$AdminContent = new renderable('div');
-$AdminContent->classes=['row','content-body'];
+$AdminContent = new renderable('li');
+$AdminContent->classes=['col-sm-10', 'row','container-fluid'];
 $AdminContent->children[]=$AdminTable = new renderable('table');
-$AdminTable->classes = ['table table-hover table-large'];
 $AdminTable->children[]=$TheList;
 
 $AdminMain->children[]=$AdminContent;

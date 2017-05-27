@@ -16,8 +16,7 @@ $contentHeader->classes[]='controls';
 $contentHeader->content='
 <div class="control" style="float: right;padding-bottom: 4px;" data-context=\'{"dataset://compositions":{"__self_id":null, "_response_target":"#componentSettingsStage"}}\' data-intent=\'{"REFRESH":{"PagesList":"New"}}\' >
                         <button data-toggle="modal" href="#AdminModal" type="button" style="background-color: #aae; color: black;">New Page</button>
-</div>
-<span style="float: left;"><h1>'.Composition::$Active->Context['data']['title'].'</h1></span>';
+</div>';
 
 $AdminMain->children[] = $ListStage = new renderable(['tag'=>'li', 'classes'=>['col-sm-10']]);
 //$AdminMain->children[]=
