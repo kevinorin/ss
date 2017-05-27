@@ -20,7 +20,16 @@
         <ul class="nav navbar-nav">
           <li class="<?php echo $file=="index.php"?"active":"";?>"><a href="index.php">Home</a></li>
           <li class="<?php echo $file=="listings.php"?"active":"";?>"><a href="listings.php">Listings</a></li>
-          <li class="<?php echo $file=="about.php"?"active":"";?>"><a href="about.php">About</a></li>
+          <li class="<?php echo $file=="about.php"?"active":"";?>">
+              <a href="about.php">About <span class="menu-arrow hidden-xs"><em class="fa fa-angle-down"></em></span></a>
+              <span class="menu-arrow visible-xs"><em class="fa fa-angle-down"></em></span>
+              <ul class="dropdown-menu">
+                <li><a href="#">About Suitespace</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Experience</a></li>
+              </ul>
+            </li>
           <li class="<?php echo $file=="blog.php"?"active":"";?>"><a href="blog.php">Blog</a></li>
           <li class="<?php echo $file=="contact.php"?"active":"";?>"><a href="contact.php">Contact</a></li>
           <li class="<?php echo $file=="search.php"?"active":"";?>"><a href="search.php">Search Properties</a></li>

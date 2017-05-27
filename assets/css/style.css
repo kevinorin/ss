@@ -2144,7 +2144,7 @@ h4 {
   font-weight: 700;
 }
 .navbar {
-  padding: 13px 0 14px;
+  padding: 13px 0 0;
   border: none;
   border-radius: 0;
   margin: 0;
@@ -2196,6 +2196,20 @@ h4 {
   background-color: transparent;
   color: #32b1cc;
 }
+.navbar-default .navbar-nav .dropdown-menu {
+  padding: 0;
+  height: auto;
+  background-color: #434343;
+  display: none;
+}
+.navbar-default .navbar-nav .dropdown-menu > li > a {
+  color: #ffffff;
+  padding: 10px 15px;
+}
+.navbar-default .navbar-nav .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .dropdown-menu > li > a:focus {
+  background-color: #26B1CE;
+}
 .navbar-brand {
   padding: 0;
   height: auto;
@@ -2204,7 +2218,10 @@ h4 {
   max-width: 214px;
 }
 .navbar-nav > li > a {
-  padding: 12px 28px;
+  padding: 12px 28px 26px;
+}
+.navbar-nav > li > a .menu-arrow {
+  margin-left: 10px;
 }
 .navbar-brand .white-logo {
   display: none;
@@ -2982,6 +2999,9 @@ textarea.form-control {
   .navbar-nav > li:last-child > a {
     padding-right: 0;
   }
+  .navbar-nav > li:hover .dropdown-menu {
+    display: block;
+  }
   .panel-block.search-bar {
     padding: 27px 29px 13px;
   }
@@ -3064,9 +3084,24 @@ textarea.form-control {
     margin-right: 0;
     margin-top: 4px;
   }
+  .navbar-nav > li {
+    position: relative;
+  }
   .navbar-nav > li > a {
     padding-top: 8px;
     padding-bottom: 8px;
+  }
+  .navbar-nav > li .menu-arrow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+  }
+  .navbar-nav > li .menu-arrow em {
+    line-height: inherit;
   }
   .navbar-collapse {
     border: none;
