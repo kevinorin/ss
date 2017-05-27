@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html ><head >
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--link href="http://static.myrealestatesite.co/css/toolkit-light.css" rel="stylesheet"-->
+<link href="http://static.myrealestatesite.co/css/component.css" rel="stylesheet" />
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/91cc4ee1af.css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://static.myrealestatesite.co/js/chart.js"></script>
+<script type="text/javascript" src="http://static.myrealestatesite.co/js/tablesorter.min.js"></script>
+<script type="text/javascript" src="http://static.myrealestatesite.co/js/toolkit.js"></script>
+<script type="text/javascript" src="http://static.myrealestatesite.co/js/application.js"></script>
+<script type="text/javascript" src="http://static.myrealestatesite.co/js/optimal-select.min.js"></script>
+<script type="text/javascript" src="http://static.myrealestatesite.co/js/acc.js"></script>
+<title>Visual Realty</title>
+
+<script>
+
+var ActiveStage={};
+var ActiveComp={};
+var LayoutTree= [{
+	"render":[[]],
+	"children": [
+		{ "render":[[]],"children": [],"size": [],"nid":1 }
+	],
+	"size": [12],
+	"nid":0
+}];
+
+var LayoutTreeNodeCursor=LayoutTree[0].children[0];
+var LayoutTreeSize = 2;
+var LayoutTreeLinks = [ LayoutTree[0], LayoutTree[0].children[0] ];
+var LayoutTreeElements = {};
+var LayoutSelectedRow = {};
+var LayoutSelectedContainer = [];
+
+/*
+var bscols = [
+ '.col-xs-1', '.col-xs-2', '.col-xs-3', '.col-xs-4', '.col-xs-5', '.col-xs-6', '.col-xs-7', '.col-xs-8', '.col-xs-9', '.col-xs-10', '.col-xs-11', '.col-xs-12',
+ '.col-sm-1', '.col-sm-2', '.col-sm-3', '.col-sm-4', '.col-sm-5', '.col-sm-6', '.col-sm-7', '.col-sm-8', '.col-sm-9', '.col-sm-10', '.col-sm-11', '.col-sm-12',
+ '.col-md-1', '.col-md-2', '.col-md-3', '.col-md-4', '.col-md-5', '.col-md-6', '.col-md-7', '.col-md-8', '.col-md-9', '.col-md-10', '.col-md-11', '.col-md-12',
+ '.col-lg-1', '.col-lg-2', '.col-lg-3', '.col-lg-4', '.col-lg-5', '.col-lg-6', '.col-lg-7', '.col-lg-8', '.col-lg-9', '.col-lg-10', '.col-lg-11', '.col-lg-12'
+];
+*/
+var bscols = 'col-xs-1 col-xs-2 col-xs-3 col-xs-4 col-xs-5 col-xs-6 col-xs-7 col-xs-8 col-xs-9 col-xs-10 col-xs-11 col-xs-12 col-sm-1 col-sm-2 col-sm-3 col-sm-4 col-sm-5 col-sm-6 col-sm-7 col-sm-8 col-sm-9 col-sm-10 col-sm-11 col-sm-12 col-md-1 col-md-2 col-md-3 col-md-4 col-md-5 col-md-6 col-md-7 col-md-8 col-md-9 col-md-10 col-md-11 col-md-12 col-lg-1 col-lg-2 col-lg-3 col-lg-4 col-lg-5 col-lg-6 col-lg-7 col-lg-8 col-lg-9 col-lg-10 col-lg-11 col-lg-12';
+
+$(document).ready(function() 
+{
+	$("[data-sort=table]").tablesorter({sortList: [[1,0]]});
+	$('#layoutCanvas').data('LayoutNID',0);
+	LayoutSelectedContainer = $('#layoutCanvas').children().first();
+    LayoutSelectedContainer.data('LayoutNID',1);
+	//LayoutSelectedContainer.click(setActiveLayoutNode);
+    LayoutSelectedRow = LayoutTreeNodeCursor;
+    
+    $('.addComponentBtn').click(addComponent);
+    $('.ComponentBtns').click(ComponentAdded);
+    $('.ColumnButtonHack').click(rowColumns);
+    
+    Interface.prototype.getSelectedStage = function(support){
+        //console.log(LayoutTreeNodeCursor);
+        LayoutTreeNodeCursor.render[ActiveStage.data('colindex')+0].push( support );
+        return $(ActiveStage);
+    };
+
+    $('.Interface').each(function(instance, Markup){ Markup.Interface=new Interface(Markup);	});
+    $('#layoutCanvas').sortable({stop:onSort, handle: '.moveRow'});
+    LayoutTreeElements[0] = $('#layoutCanvas');
+    LayoutTreeElements[1] = $('#layoutCanvas .layoutRow')[0];
+});
+
+function ComponentAdded() {
+    $(document).ajaxSuccess(function(){
+        ActiveComp = $(ActiveStage).find('.layoutComponent').last();
+        console.log(ActiveComp);
+        $(document).ajaxSuccess(function(){});
+    });
+}
+
+function addComponent(e) {
+    var row = $(e.currentTarget).closest('.layoutRow').data('LayoutNID')+0;
+    ActiveStage = $(e.currentTarget).closest('.layoutRowStage');
+    //console.log(stage[0]);
+    /*var stageSelector = OptimalSelect.select(ActiveStage[0],{
+        ignore:{
+            attribute:function(name, value, defaultPredicate){ return (/data-* /).test(name) || defaultPredicate(name, value);} },
+        });*/
+    LayoutTreeNodeCursor=getLayoutNode(row);
+}
+
+function getLayoutNode(NID,c) {
+    var branch = c || LayoutTree;   //intentional || style default
+    for(var i=0,L=branch.length; i<L; i++){
+        if(branch[i].nid == NID) return branch[i];
+        else{
+            var n = getLayoutNode(NID,branch[i].children);
+            if (n != -1) return n;
+        }
+    }
+    return -1;
+}
+function onSort(e, sort_context) {
+    var activeRow = $(sort_context.item[0]);
+    var tmpArr=[LayoutTree[0]];
+    //Reset and swap node order values
+    $('#layoutCanvas .layoutRow').each(function(i,el){
+        var NID = $(el).data('LayoutNID')+0;
+        tmpArr[i+1] = getLayoutNode( NID );
+        LayoutTreeElements[NID]=el;
+        $(el).data('instance',i);
+        $(el).find('.layoutRowController').data('instance',i);
+    });
+    $(tmpArr).each(function(i,val){ if(i==0) LayoutTreeLinks[0]=LayoutTree; LayoutTree[0].children[i-1] = val; LayoutTreeLinks[i] = LayoutTree[0].children[i-1]; });
+    //console.log(LayoutTree,LayoutTreeLinks);
+}
+
+function rowColumns(e){
+    $('#rowSettingsModal').modal('hide');
+    var colOpts = $(e.currentTarget).data('colopts');
+    addRow(e,colOpts);
+}
+
+function setActiveLayoutNode(e){
+	LayoutSelectedRow = LayoutTreeLinks[ $(e.target).data('LayoutNID')+0 ];
+	setActiveContainer(e);
+}
+
+function setActiveContainer(e){    LayoutSelectedContainer = e.currentTarget;  }
+
+
+function addRow(e, cols){
+
+	var row;
+    var trow ='<li class="panel panel-default col-sm-12 layoutRow" data-self="" data-instance="">';
+    
+    
+/*
+<li class="panel panel-default col-sm-12 layoutRow" data-self="0" data-instance="0">
+    <div class="layoutRowStage">
+        <a href="#" class="addComponentBtn btn layoutBtn" data-toggle="modal" data-target="#ComponentLibrary" > <i class="fa fa-plus"></i> </a>
+    </div>
+    <div class="layoutRowController controls selectable instance" data-self="" data-instance="">
+        <span class="moveRow"><i class="fa fa-arrows"></i></span><span class="editRow"><i class="fa fa-pencil"></i></span><span class="deleteRow"><i class="fa fa-trash"></i></span>
+    </div>
+</li>
+ 
+ 
+ */
+    $('#layoutCanvas').sortable("destroy");
+    $('#layoutCanvas').sortable({stop:onSort, handle: '.moveRow'});
+    
+    //console.log(cols, cols.length);
+    for (var i=0, L=cols.length; i < L; i++) {
+        trow +='<div class="layoutRowStage '+
+            'col-xs-'+cols[i]+' '+
+            'col-sm-'+cols[i]+' '+
+            'col-md-'+cols[i]+' '+
+            'col-lg-'+cols[i]+' '+
+            '" data-colindex="'+i+'"> <a href="#" class="addComponentBtn btn layoutBtn" data-toggle="modal" data-target="#ComponentLibrary" > <i class="fa fa-plus"></i> </a> </div>'
+    }
+    trow = trow + '<div class="layoutRowController controls selectable instance" data-self="" data-instance=""> <span class="moveRow"><i class="fa fa-arrows"></i></span><span class="editRow"><i class="fa fa-pencil"></i></span><span class="deleteRow"><i class="fa fa-trash"></i></span> </div></li>';
+    row = $(trow);
+	
+    $('#layoutCanvas').append( row );// $('#layoutCanvas').children().last();
+    row = $('#layoutCanvas').children().last();
+	var LayoutNID = LayoutTreeSize;
+    var instanceID = LayoutTree[0].children.length;
+
+	LayoutTree[ 0 ].children.push( { "render":[[]],"children": [],"size": [],"nid":LayoutNID } );
+	LayoutTreeLinks[ 0 ] = LayoutTree[ 0 ].children[ LayoutNID ];
+	row.data('LayoutNID',LayoutNID);
+	row.data('ColumnSize','[12]');
+    row.data('instance',instanceID);
+    row.attr('id','layoutRow_'+LayoutNID);
+    row.find('.layoutRowController').data('instance',instanceID);
+    row.find('.addComponentBtn').click(addComponent);
+    //row.click(setActiveLayoutNode);
+	LayoutSelectedRow = LayoutTreeLinks[ LayoutNID ];    
+    LayoutSelectedContainer = $('#layoutCanvas').last();
+    
+	LayoutTreeSize++;
+}
+// data-context='{"_self_id":[@ ID @], "_response_target":"#ResultsSelector"}
+
+function remRow(e) {
+    var NID = $(e.currentTarget).data('instance')+0;
+    $( e.currentTarget ).remove();
+    LayoutTree[0].splice(NID,1);
+    
+    for (var i=0, L=LayoutTreeLinks.length; i<L; i++)
+        if (LayoutTreeLinks[i].nid==NID)
+            LayoutTreeLinks.splice(i,1);
+
+    LayoutTreeSize--;
+    
+    LayoutTreeNodeCursor=LayoutTree[0].children[0];
+    LayoutSelectedContainer=row = $('#layoutCanvas').children().first();
+}
+function remSelected(e) { $(LayoutSelectedContainer).remove(); }
+function addSelected(e){
+	var row = $('<div></div>');
+	
+    if ($(LayoutSelectedContainer).hasClass('droppable' ) ){
+        $(row).insertBefore( $(LayoutSelectedContainer).children().last() );
+    	row = $(LayoutSelectedContainer).children().last();
+    }
+    else{
+        $(LayoutSelectedContainer).closest('droppable').append(row);
+    	row = $(LayoutSelectedContainer).closest('droppable').children().last();
+    }
+
+	LayoutTreeLinks[ LayoutNID ].children.push( { "render":[[]],"children": [],"size": [],"nid":LayoutTreeSize } );
+	LayoutTreeLinks[ LayoutTreeSize ] = LayoutTreeLinks[ LayoutNID ].children[ LayoutTreeLinks[ LayoutNID ].children.length-1 ];
+	row.data('LayoutNID',LayoutTreeSize);
+	row.data('ColumnSize',$('#colWidthSlider').val());
+    row.click(setActiveLayoutNode);
+	LayoutSelectedRow = LayoutTreeLinks[ LayoutTreeSize ];
+    LayoutSelectedContainer = row;
+	LayoutTreeSize++;
+}
+
+
+
+
+
+//function whileDrag(e, comp){}
+/*
+function insertComponent(e, comp){
+	$(e.target).append( comp.draggable.clone() );
+	
+	//var c = $(e.target).children().last();
+	//c.draggable('destroy');
+	//$(e.target).children().last().draggable({'helper':'clone',appendTo: "body",snap: true, snapMode: 'inner'});
+    $(e.target).children().last().click(setActiveContainer);
+	$(comp.helper).remove();
+}
+*/
+</script>
+
+<style>
+
+
+*{ font-family: 'Open Sans'; }
+h1 {
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+    margin-right: 2em;
+}
+h3 {
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+}
+p {
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+blockquote {
+	font-size: 21px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 30px;
+}
+pre {
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18.5714px;
+}
+
+
+
+
+hr{ width: 100%; color: #E8E8E8; height: 1px; border-bottom: 1px solid #E8E8E8;}
+html, body, doctype, #Stage{ height: 100%; margin: 0px; padding: 0px; }
+html, body, doctype{ height: 100%; width: 100%; overflow: auto; z-index: 0; position: absolute; top: 0px; left: 0px; }
+
+.panel{ position: relative;}
+.ComponentControl{ padding: 4px; }
+.draggable:hover{ border: 4px dotted #77C; cursor: move; z-index: 32767; }
+
+.ui-draggable-dragging,
+{
+	border: 4px double blue;
+	z-index: 32767; 
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+.drop-hover, .droppable-hover{ background-color: #ffa; border: 4px double black !important; }
+
+#addRow{
+position: absolute; left: 0; top: 0;
+margin-left: -12em;
+}
+#layoutCanvas{ padding-bottom: 42px; }
+
+.addComponentBtn, .addRowBtn, .showComponentLib, #addRowBtn, #addSelectRowBtn{ vertical-align: middle; line-height: 26px; text-align: center; height: 38px; border-radius: 5px; background-color: #26B1CE; padding: 6px 12px; font-size: 24px;   color: white; display: inline-block;}
+.smallBtn{ font-size: 12px; height: 33px; border-radius: 5px; color: white; }
+.lgBtn{ font-size: 13px; height: 38px; border-radius: 5px; color: white; }
+i:hover, i, button, button:hover { color: white;  }
+
+#addRowBtn:hover, #addSelectRowBtn:hover{ background-color: #06719E; }
+
+li{ list-style: none; }
+
+#AdminNav{ text-align: center; margin-top: 38px; }
+#ContentHeader{ margin-top: 38px; }
+
+.layoutRowStage{display: inline-block; vertical-align: middle; background-color: white; padding: 15px; border-left: 0px solid #eaeaea; border-right: 14px solid #eaeaea; padding-left: 0px; padding-right: 0px;}
+/*.layoutRow .layoutRowStage:first-child{border-left: 0px solid white;padding-left: 0px;}*/
+
+#AdminNav a {
+  text-decoration: none;
+  position: relative;
+  color: #3366FF;
+}
+
+#AdminNav a:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0%;
+  border-left: 2px solid #3366FF;
+  transition: 0.4s;
+}
+
+#AdminNav a:hover:after {
+  height: 100%;
+}
+#AdminNav li{ height: 2em; vertical-align: middle; text-align: left; padding: 0px; padding-left: 4em; margin: 0px; font-size: 18px; }
+#AdminNav li.active a:after { height: 100% } 
+#AdminNav a{ color: #302830; } 
+
+/*
+.layoutBtn{
+height: 70%; color: white !important; 	background-color: #33B0CC  !important;font-size: 24px;padding: 16px;margin-right: 2em;
+}
+*/
+body{counter-reset: layoutRow; }
+
+.layoutRow{
+position: relative; z-index: 10; 
+background-color: #eaeaea; 
+margin: 0px; 
+min-height: 7em; 
+vertical-align: middle; text-align: center; line-height: 100%;
+margin-top: 7em;
+margin-bottom: 1.5em;
+padding: 14px;
+}
+.layoutComponent{ margin-top: 7em; position: relative; z-index: 20; }
+.layoutRowController, .layoutComponentController{ height: 37px; background-color: #e0e0e0; color: #D3D3D3; font-size: 14px; vertical-align: top; text-align: left; position: absolute; top: -37px; left: -1px; z-index: 12; padding: 0px;margin: 0px; }
+.layoutRow{ border-radius: 0px; }
+.layoutComponentController span, .layoutRowController span{
+line-height: 37px;
+vertical-align: top; 
+padding-left: 1.5em;
+padding-right: 1.5em;
+
+display: inline-block;
+height: 37px !important;
+border-right: 1px solid #989898; 
+color: #2F2F2F;
+}
+.layoutComponentController{background-color: #6e6e6e; border-color: #7b7b7b; }
+.layoutComponentController span:hover{background-color: #606060; }
+.layoutComponentController span:hover:last-child{background-color: #d30000; }
+
+
+.layoutRowController span, .layoutRowController i{ background-color: #e0e0e0; border-color: #efefef; }
+.layoutRowController span:hover, .layoutRowController i:hover{ background-color: #d1d1d1;}
+.layoutRowController span:hover:last-child{ background-color: #d30000; }
+.ComponentControl:hover{ border: 8px double #acacac; cursor: pointer; }
+
+#ComponentLibrary{
+width: 50%; left: auto; right: 7% !important;
+min-height: 20px;
+max-height: 80%:
+border-radius: 5px;
+background-color: #fff;
+}
+.ColumnButtonHack {
+    width: 100%; height: 24px; overflow:hidden; display: inline-block;
+    margin: 0px; margin-bottom: 8px; margin-top: 4px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 14px;
+}
+.ColumnButtonHack:hover{
+    cursor: pointer;
+    background-color: #ffa;
+    
+    margin: 4px;
+}
+
+.ColumnButtonHack img{ display: inline-block; vertical-align: top;}
+
+.ColumnFrontEnd{
+    display: inline-block; vertical-align: middle; background-color: white; padding: 15px;
+    border-left: 2px solid #eaeaea;
+    border-right: 2px solid #eaeaea;
+    
+}
+
+
+.modal-backdrop {
+  z-index: -1 !important;
+}
+.modal-body{ background-color: #fff; }
+
+.ComponentBtns{
+    height: 5em; line-height: 5em;
+    border: 2px solid #7b7b7b;
+    border-radius: 12px;
+    vertical-align: middle; text-align: center;
+    color: black; background-color: #cacaca;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+.ComponentBtns:hover{background-color: #acacac; border: 2px ridge #8eb4bc; color: white;}
+.layoutRow{padding-right: 0px; }
+
+</style>
+</head>
+
+
+<!-- " counters(layoutRow,"_") " -->
+<body class="sheer">
+<!--div id="Stage"  class="container" style="margin: 0px; margin-top: 8px;" -->
+<ul  id="AdminNav" class="nav col-sm-2 row" style="height: 90%; position: relative; top: 0px; left: 0px; " >
+	 <li style="height: 3em;"><img style="margin-left: -1em; height: 100%; " src="VRlogo.png" /></li>
+	  <li><a data-toggle="tab" href="#component_library">Listings</a></li>
+	  <li><a data-toggle="tab" href="#component_settings">Leads</a></li>
+	  <li><a data-toggle="tab" href="#component_settings">Pages</a></li>
+	  <li><a data-toggle="tab" href="#component_settings">Posts</a></li>
+	  <li><a data-toggle="tab" href="#component_settings">Media</a></li>
+	  <li><a data-toggle="tab" href="#component_settings">Settings</a></li>	  
+	  <li><a data-toggle="tab" href="#component_settings">Support</a></li>
+	  <li class="active"><a data-toggle="tab" href="#component_settings">Settings</a></li>
+</ul>
+
+<ul  class="nav col-sm-10 content row" style="height: 90%; position: relative; top: 0px; left: 0px;" >
+	 <li id="ContentHeader"  style="height: 3em; position: relative; vertical-align: middle; margin-bottom: 28px; ">
+		 <span style="float: left;"><h1>New Page</h1></span>
+		 <span style="float: right;"> <a class="btn btn-primary btn-lg" style="background-color: #74959E;" href="#" role="button">Preview</a></span>
+		 <span style="float: right;"> <a class="btn btn-primary btn-lg" style="background-color: #27B1CE;" href="#" role="button">Update</a></span>        
+         Add Row<a href="#" id="addRowBtn" class="btn layoutBtn" data-toggle="modal" data-target="#rowSettingsModal">	<i class="fa fa-plus"></i></a>
+	 </li>
+	<li><hr /></li>
+	<li>
+        <ul id="layoutCanvas" style="min-height: 38em;">
+		<li id="layoutRow_1 " class="panel panel-default col-sm-12 layoutRow" data-self="" data-instance="">
+			<div class="layoutRowStage col-xs-12 col-sm-12 col-md-12 col-lg-12 " data-colindex="0">
+				<a href="#" class="addComponentBtn btn layoutBtn" data-toggle="modal" data-target="#ComponentLibrary" > <i class="fa fa-plus"></i> </a>
+			</div>
+			<div class="layoutRowController controls selectable instance" data-self="" data-instance="0">
+                <span class="moveRow"><i class="fa fa-arrows"></i></span><span class="editRow"><i class="fa fa-pencil"></i></span><span class="deleteRow"><i class="fa fa-trash"></i></span>
+            </div>
+		</li>
+        </ul>
+<!--
+		<br/><br/>
+		
+		<br/><br/>
+		<a href="#" id="remSelectRowBtn" class="btn btn-danger btn-lg">
+			<span class="glyphicon glyphicon-minus"></span> Selected
+		</a>
+		<br /><br />
+		<center>Element Width </center> <INPUT id="colWidthSlider" name="colWidthSlider" TYPE="RANGE" MIN="1" MAX="12" STEP="1" VALUE="12">
+-->
+	</li>
+
+</ul>
+
+
+<ul id="ComponentLibrary"  tabindex="-1" role="dialog" aria-labelledby="ComponentLibrary" aria-hidden="true" style="display: none; max-height: 80%;"  class="fade nav nav-tabs col-sm-9 modal ComponentLibrary" >
+    <li class="col-sm-12"><h1>Component Library</h1> <button type="button" class="close" style="font-size: 24px; position: absolute; top: 0em; right: 1em;" data-dismiss="modal">&times;</button> <hr /></li>
+    <li class="col-sm-12 Interface controls">
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"APPEND":{"Banner":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="Banner">Banner</div><div class="col-sm-2"></div>
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"APPEND":{"Listing":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="Listing">Listings</div><br />
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"APPEND":{"Youtube":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="Youtube">Youtube</div><div class="col-sm-2"></div>
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"APPEND":{"Vimeo":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="Vimeo">Vimeo</div><br />
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"APPEND":{"Text":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="Text">Text</div><div class="col-sm-2"></div>
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"APPEND":{"ImageRow":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="ImageRow">Image</div><br />
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"APPEND":{"ButtonRow":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="ButtonRow">Button</div><div class="col-sm-2"></div>
+        <div class="col-sm-5 ComponentBtns control" data-role="Service"  data-intent='{"APPEND":{"LeadGeneration":"New"}}' data-context='{"_self_id":null, "_response_target":"getSelectedStage()"}' data-component="LeadGeneration">Lead Generation</div><br />
+    </li>
+</ul>
+
+
+
+
+
+
+<ul ><li id="SigninModal"  tabindex="-1" role="dialog" aria-labelledby="SigninModal" aria-hidden="true" style="display: none;"  class="modal fade" >       
+       <!-- Modal for Sign in (ps: has to be moved) -->
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form method="post">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="Sign in" id="myModalLabel">Sign in</h4>
+            </div>
+            <div id="LoginModal" class="modal-body">
+                <div class="form-group">
+                  <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                  <input type="email" name="email" class="form-control" RowController="Enter email"><br /><br />
+                </div>
+                <div class="form-group">
+                  <label class="sr-only" for="exampleInputPassword2">Password</label>
+                  <input type="authen_key" name="password" class="form-control" RowController="Password"><br /><br />
+                </div>
+                <div id="RememberMe" class="checkbox">
+  <label>
+                    <input type="checkbox"> Remember me
+  </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="ModalRegisterButton" class="btn pull-left">Register</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <input id="ModalLoginButton" class="btn btn-primary" data-loading-text="Loading..." type="submit" value="Login">
+
+            </div>
+            </form>
+          </div>
+        </div>
+</li>
+</ul>
+
+<div data-backdrop="false" aria-hidden="true" style="display: none;" aria-labelledby="rowSettingsModal" class="modal modal-sm fade" id="rowSettingsModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" style="width: 16em;">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4>Row Settings</h4>
+        </div>
+        <div class="modal-body">
+            <div class="ColumnButtonHack" data-colopts="[12]">
+                <img src="Columns.png" style="width: 64px; height: 100%;" class="sheer" />
+                <span>1/1</span>
+            </div>
+            <div class="ColumnButtonHack" data-colopts="[6,6]">
+                <img src="Columns.png" style="width: 31px; height: 100%;" class="sheer" />
+                <img src="Columns.png" style="width: 31px; height: 100%;" class="sheer" />
+                <span>1/2 + 1/2</span>
+            </div>
+            <div class="ColumnButtonHack" data-colopts="[4,8]">
+                <img src="Columns.png" style="width: 16px; height: 100%;" class="sheer" />
+                <img src="Columns.png" style="width: 46px; height: 100%;" class="sheer" />
+                <span>1/3 + 2/3</span>
+            </div>
+            <div class="ColumnButtonHack" data-colopts="[8,4]">
+                <img src="Columns.png" style="width: 46px; height: 100%;" class="sheer" />
+                <img src="Columns.png" style="width: 16px; height: 100%;" class="sheer" />
+                <span>2/3 + 1/3</span>
+            </div>
+            <div class="ColumnButtonHack" data-colopts="[3,3,3,3]">
+                <img src="Columns.png" style="width: 13px; height: 100%;" class="sheer" />
+                <img src="Columns.png" style="width: 14px; height: 100%;" class="sheer" />
+                <img src="Columns.png" style="width: 13px; height: 100%;" class="sheer" />
+                <img src="Columns.png" style="width: 14px; height: 100%;" class="sheer" />
+                <span>1/4 x 4</span>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- /div-->
+<ul tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  class="modal fade" ></ul>
+<script type="text/javascript" ></script>
+
+</body>
+</html>

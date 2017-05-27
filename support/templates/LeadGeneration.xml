@@ -1,0 +1,60 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:LeadGeneration type="json">
+	{
+		"users":
+		{
+			"id" : "_self_id",
+			"display_name" : "agent",
+			"profile" : "messagePost",
+			"href":"link",
+            "firm_name": "broker",
+            "tele" : "phone",
+            "addr_01" : "addr_01",
+            "addr_02" : "addr_02",
+            "thumbnail" : "profile",
+			"typeopt":"leadOpts"
+		}
+	}
+	</Component:LeadGeneration>
+	<Render:Markup bind="LeadGeneration">
+
+    <div class="agentProfileForum" >
+			<div class="fullProfile">
+				<img class="agentProfile" src="http://www.gantrypark.com/Portals/12/Users/066/14/53314/adam-parker-large.jpg" />
+				<span class="line0"> [@ agent @]</span>
+				<span class="line1"> [@ broker @]</span>
+				<br/>
+				<span class="line2"> [@ phone @] </span>
+				<span class="line3"> [@ contact @] </span>
+				<span class="line4"> [@ addr_01 @] </span>
+				<span class="line5"> [@ addr 02 @] </span>
+				<hr noshade="noshade" class="breakline" />
+			</div>
+	</div>
+
+	<div class="agentProfileForum" >
+			<div class="forum">
+				<form class="Autoform" action="LeadGeneration">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Full Name" name="_fname" />
+				</div>
+				
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Email" name="_email" />
+				</div>
+				
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Phone" name="_phone" />
+				</div>
+				
+				<div class="input-group">
+					<textarea rows="6" name="_message" class="form-control" placeholder="Message">&#160;</textarea>
+				</div>
+				
+				<input type="submit" name="submit" value="Send to Agent" class="SubmitBtn btn btn-default" />
+				
+				</form>
+			</div>
+	</div>
+	</Render:Markup>
+</Template>

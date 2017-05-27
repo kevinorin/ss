@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <meta name = "format-detection" content = "telephone=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>:: VR Admin ::</title>
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom styles-->
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <link href="assets/css/ie8.css" rel="stylesheet">
+    <![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="assets/js/modernizr-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <div id="page">
+        <div id="wrapper">
+            <!-- Header Start -->
+            <header id="header" class="navbar navbar-default">
+                <div class="header-inner">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt=""></a>
+                        <button type="button" class="navbar-toggle">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!-- Nav Start -->
+                    <nav id="nav">
+                        <div class="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#">Listings</a></li>
+                                <li class="active"><a href="#">Leads <span class="badge">2</span></a></li>
+                                <li><a href="#">Pages</a></li>
+                                <li><a href="#">Posts</a></li>
+                                <li><a href="#">Media</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Support</a></li>
+                            </ul>
+                            <ul class="nav-icons clearfix">
+                                <li><a href="#"><img src="assets/images/icon-goggles.png" alt=""></a></li>
+                                <li><a class="logout" href="#">Logout</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            
+            <!-- Content Start -->
+            <section id="content">
+                <div class="container-fluid">
+                    <div class="heading-title clearfix">
+                        <div class="heading-left">
+                            <h2>New Listings</h2>
+                        </div>
+                        <div class="heading-right text-right">
+                            <a href="#" class="btn btn-link"><em class="fa fa-gear"></em></a>
+                            <a href="#" class="btn btn-default">Preview</a>
+                            <a href="#" class="btn btn-primary">Save changes</a>
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <div class="admin-form">
+                            <form>
+                                <div class="form-group">
+                                    <div class="photo-arrange">
+                                        <ul class="clearfix">
+                                            <li>
+                                                <div class="image-block upload-file">
+                                                    <div class="file-upload">
+                                                        <span>Drag and drop</span>
+                                                    </div>
+                                                    <input type="file">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="image-block" style="background-image:url(assets/images/banner-image-5.jpg);">
+                                                    <button type="button"><em class="fa fa-star"></em></button>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="alert alert-info alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        Better check yourself, you're not looking too good.
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Listing title">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control js-selectbox">
+                                        <option>Type:regular</option>
+                                        <option>Type:regular1</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control js-selectbox">
+                                        <option>Type:regular</option>
+                                        <option>Type:regular1</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Listing title">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Listing title">
+                                </div>
+                                <div class="form-group">
+                                    <div class="panel-block">
+                                        <div class="editor-block">
+                                            <img src="assets/images/editor.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="panel-block add-new-item">
+                                        <div class="add-item-head">
+                                            <input type="text" class="form-control" placeholder="Listing title">
+                                            <button type="button" class="btn btn-info">Add</button>
+                                        </div>
+                                        <div class="add-item-body">
+                                            <ul class="clearfix item-list">
+                                                <li><button type="button" class="remove-btn"><em class="fa  fa-times-circle"></em></button> Single Family</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="panel-block add-new-item">
+                                        <div class="add-item-head">
+                                            <input type="text" class="form-control" placeholder="Listing title">
+                                            <button type="button" class="btn btn-info">Add</button>
+                                        </div>
+                                        <div class="add-item-body">
+                                            <ul class="clearfix item-list">
+                                                <li><button type="button" class="remove-btn"><em class="fa  fa-times-circle"></em></button> Single Family</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="panel-block add-new-item map-block">
+                                        <div class="add-item-head">
+                                            <input type="text" class="form-control" placeholder="Listing title">
+                                            <button type="button" class="btn btn-info">Search</button>
+                                        </div>
+                                        <div class="add-item-body">
+                                            <div class="map">
+                                                <img src="assets/images/map.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="share-media gray-check-box">
+                                        <p><strong>Lorem</strong> Lorem ipsum</p>
+                                        <div class="check-list">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> Facebook
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> Twitter
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> Facebook
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <!-- JavaScript files -->
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap-select.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="assets/js/cssua.js"></script>
+    <script src="assets/js/custom.js"></script>
+</body>
+</html>

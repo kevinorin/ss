@@ -1,0 +1,49 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:ListingsList type="json">
+	{
+		"listings":
+		{
+			"id" : "_self_id",
+            "agent":"usr",  
+            "type":"kind",
+            "status":"state",
+            "title":"heading",
+            "mlsnumber":"MLS",
+            "price":"cost",
+            "beds":"rooms",
+            "baths":"restrooms",
+            "area":"size",
+            "tags":"facts",
+            "features":"features",
+            "unparsed_addr":"address",
+			"description" : "networkID"
+		}        
+	}
+	</Component:ListingsList>
+	<Render:Markup bind="ListingsList" tag="tr" class="instance selectable" data-self="[@ _self_id @]">
+                <!--td class="center col-sm-1">[@ usr @]</td-->
+                <td class="center col-sm-1"> [@ kind @]</td>
+                <td class="center col-sm-1"> [@ state @]</td>
+                <td class="center col-sm-1"> [@ heading @]</td>
+                <td class="center col-sm-1"> [@ MLS @]</td>
+                <td class="center col-sm-1"> $[@ cost @].00</td>
+                <td class="center col-sm-1"> [@ rooms @]</td>
+                <td class="center col-sm-1"> [@ restrooms @]</td>
+                <td class="center col-sm-1"> [@ size @] sq ft</td>
+                <td class="center col-sm-2"> [@ networkID @]</td>
+                <!--td class="center fakeClass"> [@ address @]</td>
+                <td class="center fakeClass"> [@ facts @]</td>
+                <td class="center fakeClass"> [@ features @]</td-->
+
+                <td class="center col-sm-2">
+                    <ul class="controls" data-role="Service">
+                    <li class="control" style="float: left;padding-bottom: 4px;" data-context='{"_self_id":[@ _self_id @], "_response_target":"#componentSettingsStage"}' data-intent='{"REFRESH":{"ListingsList":"Edit"}}' >
+                        <span data-toggle="modal" href="#AdminModal"><i class="fa fa-pencil" style="font-size:24px; color: #BbBb62; padding-right: 2em;">&#160;</i></span>
+                    </li>
+                    <li class="control" data-self="[@ _self_id @]" style="float: left;padding-bottom: 4px;" data-context='{"dataset://listings":{"__self_id":[@ _self_id @], "_response_target":"#ListingsLibrary > tr:has(td > ul.controls > li[data-self=[@ _self_id @]]) "}}' data-intent='{"REMOVE":{"ListingsList":"Delete"}}' >
+                        <a><span class="fa fa-trash-o text-danger"><i style="font-size:24px; color:#228b22; ">&#160;</i></span></a>
+                    </li>
+                </ul>
+                </td>
+	</Render:Markup>
+</Template>

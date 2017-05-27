@@ -1,0 +1,89 @@
+<div class="modal-content Content">
+    <form method="post" action="dataset://strains">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#160;</button>
+       <h4>New Strain</h4>
+     </div>
+     <div class="modal-body">
+        <div><h2>Strain Information</h2><hr /></div>
+                <div class="form-group">
+                    <!--input type="text" data-field="strain" name="__self_id" class="form-control json-data m-b" required="required" minlength="3" /-->
+                    <label for="_title" class="col-xs-8 control-label text-left">Strain Name</label>
+                    <input type="text" data-field="strain" name="_title" class="form-control json-data m-b" required="required" minlength="3" />
+                    <br /><br />
+                    <label for="_abbreviation" class="col-xs-4 control-label text-left">Abbreviation</label>                    
+                    <input type="text" data-field="abbreviation" name="_abbreviation" class="form-control json-data m-b" required="required" minlength="2" maxlength="7" value="" /><br /><br /><hr />
+                </div>
+                <div class="form-group">
+                    <label for="_feminized" class="col-xs-6 control-label text-left">Regular/Feminized</label>
+                        [@ isFemSelect @]
+                        <br /><br />
+                    <label for="_type" class="col-xs-6 control-label text-left">Family</label>
+                        [@ breedSelect @]
+                    <br /><br /><hr />
+                </div>
+                
+                <div class="form-group">
+                    <label for="_indica" class="col-xs-3 control-label text-left">% Indica</label>
+                    <input type="text" data-field="indica" name="_indica" class="form-control json-data m-b" value="" /><br /><br />
+                    <label for="_sativa" class="col-xs-3 control-label text-left">% Sativa</label>
+                    <input type="text" data-field="sativa" name="_sativa" class="form-control json-data m-b" value="" /><br /><br />
+                    <label for="_maturation-height" class="col-xs-3 control-label text-left">Maturation height</label>                   
+                        [@ heightSelect @]
+                        <br /><br />
+                    <label for="_flowering" class="col-xs-3 control-label text-left">Flowering Period (days)</label>
+                    <input type="text" data-field="flowering" name="_flowering" class="form-control json-data m-b" value="" />
+                    <br /><br /><hr />
+                </div>
+                
+                <div class="form-group">
+                    <label for="_thc-content" class="col-xs-4 control-label text-left">THC Content (% Avg)</label>
+                    <input type="text" data-field="thc-content" name="_thc-content" class="form-control json-data m-b" value="" /><br /><br />
+                    <label for="_cbd-content" class="col-xs-4 control-label text-left">CBD Content (% Avg)</label>
+                    <input type="text" data-field="cbd-content" name="_cbd-content" class="form-control json-data m-b" value="" /><br /><br />
+                    <label for="_yield" class="col-xs-4 control-label text-left">Yield</label>
+                        [@ yieldSelect @]
+                        <br /><br />
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-md-8">
+                        <label> <input type="checkbox" class="i-checks" name="_cannabis-cup-winner" value="1" /> Cannabis Cup Winner </label><br /><br />
+                        <label> <input type="checkbox" class="i-checks" name="_medical-grade" value="1" /> Medical Grade </label>
+                        <br /><br /><hr />
+                    </div>
+                </div>
+
+
+            <div><h2>Source Profile</h2><hr /></div>
+                <div class="form-group">
+                    <label for="_genetics" class="col-xs-6 control-label text-left">Genetics</label>
+                    <input type="text" data-field="genetics" name="_genetics" class="form-control json-data m-b" value="" /><br /><br />
+                    <label for="_brand" class="col-xs-6 control-label text-left">Brand</label>
+                    <input type="text" data-field="brand" name="_brand" class="form-control json-data m-b" value="" /><br /><br /><hr />
+                </div>
+    
+                <div class="form-group">
+                    <label for="_breeder" class="col-xs-6 control-label text-left">Breeder</label>
+                    <input type="text" data-field="breeder" name="_breeder" class="form-control json-data m-b" value="" /><br /><br />
+                    <label for="_distributer" class="col-xs-6 control-label text-left">Distributor</label>
+                    <input type="text" data-field="distributer" name="_distributer" class="form-control json-data m-b" value="" /><br /><br /><hr />
+                </div>
+            
+            <div><h2>Other Information</h2><hr /></div>
+            <div class="form-group">
+                <label for="_url" class="col-xs-12 control-label text-left">URL Link</label>
+                <input type="text" data-field="url" name="_url" class="form-control json-data m-b" value="" /><br /><br />
+                <label for="_notes" class="col-xs-6 control-label text-left">Notes</label>
+                <textarea class="form-control" data-field="notes" name="_notes" style="width:100%; height: 70px;"></textarea>                
+            </div>
+     </div>
+     <div class="modal-footer">
+      <ul class="controls" style="display: inline-block; float:right;">
+          <li class="control" data-context='{"_self_id":"", "_response_target":"#Strain"}' data-role="autoform" data-intent='{"REFRESH":{"Strain":"Save"}}'>
+          <button type="button" class="btn btn-primary btn-default">Save</button>
+          </li>
+      </ul>
+      <button type="button" class="btn btn-default btn-warning" data-dismiss="modal" style="float: left;">Cancel</button>
+     </div>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:Listing type="json">
+	{
+		"listings":
+		{
+			"id" : "_self_id",
+            "agent":"usr",  
+            "type":"kind",
+            "status":"state",
+            "title":"heading",
+            "mlsnumber":"MLS",
+            "price":"cost",
+            "beds":"rooms",
+            "baths":"restrooms",
+            "area":"size",
+            "tags":"facts",
+            "features":"features",
+            "unparsed_addr":"address",
+			"description" : "networkID"
+		}        
+	}
+	</Component:Listing>
+	<Render:Markup bind="Listing">
+Listing Placeholder
+	</Render:Markup>
+</Template>

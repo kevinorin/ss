@@ -1,0 +1,17 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:ImageRow type="json">
+	{
+		"media_embeds":
+		{
+			"id" : "_self_id",
+			"title" : "networkID",
+			"justif":"imageAlign",
+			"href":"link",
+			"href_target":"linktarget"
+		}        
+	}
+	</Component:ImageRow>
+	<Render:Markup bind="ImageRow">
+<a href="[@ link @]" target="[@ linktarget @]" style="width: 100%; display: inline-block;"><img src="[@ imgLoc @]" style="background-color: [@ color @]; float: [@ align @];" /></a>
+	</Render:Markup>
+</Template>

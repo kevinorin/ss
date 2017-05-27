@@ -1,0 +1,104 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:ButtonRow type="json">
+	{
+		"links":
+		{
+			"id" : "_self_id",
+			"href" : "link",
+			"href_target" : "linktarget",
+			"justif" : "align",
+            "bg_color" : "color",
+            "title" : "content"
+		}        
+	}
+	</Component:ButtonRow>
+	<Render:Markup bind="ButtonRow">
+<div class="modal-content Content InterfaceContent">
+  <form method="post" action="dataset://links">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#215;</button>
+    <h4>Button Settings</h4>
+  </div>
+
+<div class="modal-body">
+    
+<div class="form­group">
+<div class="col­md­4">
+    <input type="hidden" name="__self_id" value="[@ _self_id @]" />
+<fieldset>
+<div class="form-group">
+<label class="col-md-12 control-label" for="imagealignment">Button Alignment</label>
+<div class="col-md-12">
+<select name="_align" class="form-control">
+<option value="left">Left</option>
+<option value="">Center</option>
+<option value="right">Right</option>
+</select>
+</div>
+</div>
+</fieldset>
+
+<fieldset>
+<div class="form-group">
+<label class="col-md-12 control-label" for="_content">Link Text</label>
+<div class="col-md-12">
+<div class="input-group">
+<input name="_content" class="form-control" placeholder="" type="text" value="[@ content @]" />
+</div>
+</div>
+</div>
+</fieldset>
+
+<fieldset>
+<div class="form-group">
+<label class="col-md-12 control-label" for="_link">Link Address</label>
+<div class="col-md-12">
+<div class="input-group">
+<span class="input-group-addon">http://</span>
+<input name="_link" class="form-control" placeholder="" type="text" value="[@ link @]" />
+</div>
+</div>
+</div>
+</fieldset>
+
+<fieldset>
+<div class="form-group">
+<label class="col-md-12 control-label" for="_color">Button Color</label>
+<div class="col-md-12">
+<div class="input-group">
+<input name="_color" class="form-control" placeholder="" type="color" value="[@ color @]" />
+</div>
+</div>
+</div>
+</fieldset>
+
+<fieldset>
+<div class="form-group">
+<label class="col-md-12 control-label" for="linktarget">Link Target</label>
+<div class="col-md-12">
+<select name="_linktarget" class="form-control">
+<option value="_self">Open link in same window</option>
+<option value="_blank">Open link in new window</option>
+</select>
+</div>
+</div>
+</fieldset>
+
+</div>
+</div>
+
+<br /><br />
+</div>
+
+  <div class="modal-footer">
+      <ul class="controls" style="display: inline-block; float:right;">
+          <li class="control" data-context='{"_self_id":"[@ _self_id @]", "_response_target":"selectedComponent()"}' data-role="autoform" data-intent='{"REFRESH":{"ButtonRow":"Save"}}'>
+          <button type="button" data-dismiss="modal" class="btn btn-primary btn-default">Save</button>
+          </li>
+      </ul>
+      <button type="button" class="btn btn-default btn-warning" data-dismiss="modal" style="float: left;">Cancel</button>
+  </div>  
+  </form>
+</div>
+	</Render:Markup>
+</Template>

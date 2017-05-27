@@ -1,0 +1,36 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:Post type="json">
+	{
+		"text_embeds":
+		{
+			"id" : "_self_id",
+            "agent" : "usr",
+			"embed" : "content"
+		}
+	}
+	</Component:Post>
+	<Render:Markup bind="Post">
+<div class="modal-content Content InterfaceContent">
+  <form method="post" action="dataset://text_embeds">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#215;</button>
+    <h4>Post Settings</h4>
+  </div>
+
+<div class="modal-body">
+    <input type="hidden" name="__self_id" value="[@ _self_id @]" />
+    <textarea name="_content" class="richTextEdit col-md-12">[@ content @]</textarea>
+</div>
+
+  <div class="modal-footer">
+      <ul class="controls" style="display: inline-block; float:right;">
+          <li class="control" data-context='{"_self_id":"[@ _self_id @]", "_response_target":"selectedItem()"}' data-role="autoform" data-intent='{"REFRESH":{"Post":"Save"}}'>
+          <button type="button" data-dismiss="modal" class="btn btn-primary btn-default">Save</button>
+          </li>
+      </ul>
+      <button type="button" class="btn btn-default btn-warning" data-dismiss="modal" style="float: left;">Cancel</button>
+  </div>  
+  </form>
+</div>
+	</Render:Markup>
+</Template>

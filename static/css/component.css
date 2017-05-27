@@ -1,0 +1,239 @@
+
+
+.Component{ position: relative; }
+.ComponentLayout{ height: 100% !important; width: 100%; position: absolute; top: 0px; left: 0px; }
+.round
+{
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -o-border-radius: 8px;    
+    border-radius: 8px;
+    box-shadow: 0 0 2px 2px rgba(200,200,200,0.5);
+}
+.Button
+{
+    position: relative;
+    display: inline-block;
+    background: #9898ca;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.HorizontalList
+{
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.Card
+{
+    display: inline-block;
+    margin-right: auto;
+    background: #ddc;
+    color: #333;
+    position: relative;
+}
+
+.messageboard
+{
+    padding: 100px;   
+}
+.Messages
+{
+    background-color: #505058;
+    border-radius: 14px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    -o-border-radius: 14px;
+}
+.Message
+{
+    border-top: 2px dotted #557;
+    padding: 2px 0px 8px 144px;
+    margin: 0px 0px 2px -4px;
+    background: #ddc;
+    color: #333;
+    position: relative;
+    border-radius: 14px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    -o-border-radius: 14px;    
+}
+
+.Message .profile
+{
+    width: 144px;
+    float: left;
+    margin-left: -144px;
+    margin-top: -4px;
+    padding: 4px;
+    display: inline-block;
+    border-right: 1px dotted black;
+    border-bottom: 1px dotted black;
+    border-radius: 14px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    -o-border-radius: 14px;
+    min-height: 172px;
+}
+.profile img{ width: 120px; }
+.Message .contents
+{
+    width: 100%;
+    min-height: 222px;
+    display: inline-block;
+}
+.Message .contents li{ width: 100%; display: inline-block;}
+.Message .contents .social{ border-top: 1px solid #334; margin-top: 2em;}
+.Message .contents .social .vote{ color: white;}
+.vote
+{
+    font-size: 32px;
+    line-height: 32px;
+    vertical-align: middle;
+    float: left;
+}
+.vote .fa-caret-up
+{
+    color: #7c8;
+    background-color: rgba(0, 0, 0, 0);  
+}
+.vote .fa-caret-down
+{
+    color: #c77;
+    margin-top: -0.5em;
+    background-color: rgba(0, 0, 0, 0);
+}
+li.modal, li.control{ list-style: none;}
+.modal {padding: 8px;margin-top:20px;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+}
+.modal-header, .modal-footer{background-color: #f7f7f7; color: #000;}
+.modal-header .modal-title, .modal-footer .modal-title{ color: #000; }
+.modal-header button.close{color:#32b1cc;}
+.modal-body{background-color: #ccc;}
+
+
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 0px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 32px !important;
+  -webkit-border-radius: 32px !important;
+  -moz-border-radius: 32px !important;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px !important;
+  -webkit-border-radius: 25px !important;
+  -moz-border-radius: 25px !important;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px !important;
+  -webkit-border-radius: 25px !important;
+  -moz-border-radius: 25px !important;
+}
+
+.nice_green, .glyphicons.nice_green i:before { color: #22ef10 !important;}
+.nice_yellowish, .glyphicons.nice_yellowish i:before { color: #efd010 !important;}
+
+
+#ProductLibrary ul.controls{padding-bottom: 32px;}
+
+.modal-content form input, .modal-content form select, .modal-content form textarea, .modal-content form button,
+.modal-content form datalist, .modal-content form keygen, .modal-content form output { float: right;}
+.modal-content form label, .modal-content form legend{ float: left;}
+
+
+
+
+
+.hide {
+    display:none;
+}
+ 
+.rating input {
+    position:absolute;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -khtml-opacity:0;
+    opacity:0;
+    cursor:pointer;
+    width: 32px !important;
+    height: 32px;
+}
+ 
+.rating span {
+    width:32px;
+    height:32px;
+    line-height:32px;
+    vertical-align: middle;
+    padding:1px 34px 16px 0; /* 1px FireFox fix */
+    background:url('http://static.croptender.com:8080/img/ui/leaf-on.png?2');
+}
+ 
+/* Change span immediately following the checked radio */
+ 
+.rating input:checked + span {
+    background:url('http://static.croptender.com:8080/img/ui/leaf-on.png');
+}
+ 
+/* Reset all remaining stars back to default background.
+   This supersedes the above due to its ordering. */
+ 
+.rating input:checked + span ~ span {
+    background:url('http://static.croptender.com:8080/img/ui/leaf-off.png');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.fc-content-skeleton table{ table-layout: fixed !important;}
+.fc-content-skeleton table thead tr td{ border-right: 1px solid #888; padding-left: 1em;}
+.fc-content-skeleton table tbody tr td { height: 4em; border-right: 1px dashed #77B;}
+
+.fc-content-skeleton table thead tr th{ text-align: center; }
+
+
+
+
+.fc .fc-toolbar{ position: relative; line-height: 4em; }
+.fc .fc-view table { width: 100%; }
+.fc .fc-left{ display: inline-block; float: left;}
+.fc .fc-center{ display: inline-block; position: absolute;  left: 50%; margin-left: -128px; text-align: center; width: 256px; top: 0px; }
+.fc .fc-center h2{ font-size: 18px !important;}
+.fc .fc-right{ display: inline-block; float: right;}
+
+

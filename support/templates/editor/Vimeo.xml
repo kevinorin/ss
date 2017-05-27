@@ -1,0 +1,49 @@
+<Template xmlns:Component="Component://approach.im" xmlns:Render="Render://approach.im">
+	<Component:Vimeo type="json">
+	{
+		"simple_embeds":
+		{
+			"id" : "_self_id",
+            "provider" : "network",
+			"embed" : "networkID"
+		}        
+	}
+	</Component:Vimeo>
+	<Render:Markup bind="Vimeo">
+<div class="modal-content Content InterfaceContent">
+  <form method="post" action="dataset://simple_embeds">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#215;</button>
+    <h4>Vimeo Video Settings</h4>
+  </div>
+
+<div class="modal-body">
+
+<div class="form­group">
+<div class="col­md­4">
+    <fieldset>
+    <input type="hidden" name="__self_id" value="[@ _self_id @]" data-field="id" class="form-control json-data" />
+    <input type="hidden" name="_network" value="2" data-field="network" class="form-control json-data" />
+
+    <!-- label for="_locat" class="col-sm-8 control-label text-left">Vimeo Network ID:</label -->
+    <label class="col­md­4 control­label" for="youtubevideoid">Movie ID</label>
+    <input type="text" data-field="networkID" name="_networkID" class="form-control json-data m-b" required="true" value="[@ networkID @]" />
+    </fieldset>
+</div>
+</div>
+
+<br /><br />
+</div>
+
+  <div class="modal-footer">
+      <ul class="controls" style="display: inline-block; float:right;">
+          <li class="control" data-context='{"_self_id":"[@ _self_id @]", "_response_target":"selectedComponent()"}' data-role="autoform" data-intent='{"REFRESH":{"Vimeo":"Save"}}'>
+          <button type="button" data-dismiss="modal" class="btn btn-primary btn-default">Save</button>
+          </li>
+      </ul>
+      <button type="button" class="btn btn-default btn-warning" data-dismiss="modal" style="float: left;">Cancel</button>
+  </div>  
+  </form>
+</div>
+	</Render:Markup>
+</Template>
