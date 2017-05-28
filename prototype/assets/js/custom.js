@@ -31,7 +31,13 @@ $(document).ready(function(){
 		threshold:0
 	});
 
-
+	$('.navbar-nav li > .menu-arrow').on('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      $(this).closest('li').toggleClass('active').children(".dropdown-menu").stop("true", "true").slideToggle(500);
+        $(this).closest('li').siblings().find(".dropdown-menu").stop("true", "true").slideUp();
+        $(this).closest('li').siblings().removeClass('active')
+    });
 });
 
 //Fixed nav bar on top

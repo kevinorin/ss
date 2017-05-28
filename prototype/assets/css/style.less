@@ -364,7 +364,7 @@ h4 {
 	font-weight: 700;
 }
 .navbar {
-	padding: 13px 0 14px;
+	padding: 13px 0 0;
 	border: none;
 	border-radius: 0;
 	margin: 0;
@@ -422,6 +422,22 @@ h4 {
 				}
 			}
 		}
+		.dropdown-menu{
+			padding:0;
+			height:auto;
+			background-color:@ltmdblack;
+			display:none;
+			>li{
+				>a{
+					color:@white;
+					padding:10px 15px;
+					&:hover,
+					&:focus{
+						background-color:@background_color_3;
+					}
+				}
+			}
+		}
 	}
 }
 .navbar-brand {
@@ -434,7 +450,10 @@ h4 {
 .navbar-nav {
 	>li {
 		>a {
-			padding: 12px 28px;
+			padding: 12px 28px 26px;
+			.menu-arrow{
+				margin-left:10px;
+			}
 		}
 	}
 }
@@ -1288,6 +1307,14 @@ textarea.form-control {
 					padding-right: 0;
 				}
 			}
+			.dropdown-menu{
+				display:none !important;
+			}
+			&:hover{
+				.dropdown-menu{
+					display:block !important;
+				}
+			}
 		}
 	}
 	.panel-block.search-bar {
@@ -1387,12 +1414,33 @@ textarea.form-control {
 		margin-top: 4px;
 	}
 	.navbar-nav {
+		.dropdown-menu{
+			float:none;
+			width:100%;
+			top:0;
+			position:relative;
+		}
 		>li {
+			position:relative;
 			>a {
 				padding-top: 8px;
 				padding-bottom: 8px;
 			}
+			.menu-arrow{
+				position:absolute;
+				right:0;top:0;
+				width:36px;
+				height:36px;
+				line-height:36px;
+				text-align:center;
+				cursor:pointer;
+				em{
+					line-height:inherit;
+				}
+			}
+			
 		}
+
 	}
 	.navbar-collapse {
 		border: none;

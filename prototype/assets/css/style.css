@@ -2999,8 +2999,11 @@ textarea.form-control {
   .navbar-nav > li:last-child > a {
     padding-right: 0;
   }
+  .navbar-nav > li .dropdown-menu {
+    display: none !important;
+  }
   .navbar-nav > li:hover .dropdown-menu {
-    display: block;
+    display: block !important;
   }
   .panel-block.search-bar {
     padding: 27px 29px 13px;
@@ -3084,6 +3087,12 @@ textarea.form-control {
     margin-right: 0;
     margin-top: 4px;
   }
+  .navbar-nav .dropdown-menu {
+    float: none;
+    width: 100%;
+    top: 0;
+    position: relative;
+  }
   .navbar-nav > li {
     position: relative;
   }
@@ -3099,6 +3108,7 @@ textarea.form-control {
     height: 36px;
     line-height: 36px;
     text-align: center;
+    cursor: pointer;
   }
   .navbar-nav > li .menu-arrow em {
     line-height: inherit;
