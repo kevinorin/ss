@@ -1,8 +1,10 @@
 <html>
 <head>
 	<?php include_once("head.php"); ?>
-	<title>Suite Space</title>  
+	<title>Suite Space</title>
+  
 </head>
+
 <body class="sheer home">
 	<div id="wrapper">
 		<?php include_once("header.php"); ?>

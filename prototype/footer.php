@@ -17,6 +17,7 @@
 <script type="text/javascript" src="assets/js/jquery.touchSwipe.min.js"></script>
 <script type="text/javascript" src="http://static.myrealestatesite.co/js/tablesorter.min.js"></script>
 <script type="text/javascript" src="http://static.myrealestatesite.co/js/acc.js"></script>
+
 <script src="assets/js/bootstrap-select.min.js"></script>
 <script src="assets/js/jquery.matchHeight.js"></script>
 <script src="assets/js/cssua.js"></script>
